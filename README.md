@@ -1,15 +1,20 @@
-# flask-core
+# webdev-project
 
-My basic flask framework and architecture for most of my projects     
-
-## how to use it?
+Für die Vorlesung in Web Programmierung sollen wir eine App entwickeln   
+Wir haben uns für eine Arzneimittel-Lieferengpass App entschieden   
+     
+     
+## Was kann die App?
     
-Just clone the repository and setup some requirements :smirk:
+* Bereitstellen von Informationen über Arzneimittel-Lieferengpässe in Deutschland    
+* Hersteller von Arzneimittel pflegen die Daten über ihren Arzneimittelbestand   
+* Stakeholder die diesen Informationen benötigen werden darüber informiert
+* Arzneimittel werden in zwei Klassen kategoriersiert
 
 ### virtualenv requirements.txt
      
 ```bash
-$  virtualenv -p python3 venv
+$  virtualenv -p $(which python3) venv
 $  source venv/bin/activate
 ```
 
@@ -19,13 +24,9 @@ $  source venv/bin/activate
 $  pip install -r requirements.txt
 ```
 
-## Whats inside?
+## tech stack
     
-* commander for shell and db
-* Flask migration
-* Pre-configured Dev, Test and Working Config
-* SQLite with 3 different stages
-* A blueprint for the main view
-* MomentJS via Flask-Extension
+* MySQL Database
+* Flask Micro-Framework
+* Python 3
 * SQLAlchemy ORM
-* Some db scripts (thank you miguel grinberg!)
