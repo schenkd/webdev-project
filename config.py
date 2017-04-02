@@ -5,7 +5,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config:
     # security
     WTF_CSRF_ENABLED = True
-    SECRET_KEY = 'waddehaddedudenda'
+    SECRET_KEY = os.getenv('SECRET_KEY') or 'wadehaddedudenda'
 
     # database
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
@@ -22,7 +22,10 @@ class Config:
 
 class DevConfig(Config):
     # database
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
+    DB_NAME = os.getenv('DB_NAME')
+    DB_USER = os.getenv('DB_USER')
+    DB_PW = os.getenv('DB_PW')
+    SQLALCHEMY_DATABASE_URI = 'mysql://{u}:{p}@localhost/{n}'.format(u=DB_USER, p=DB_PW, n=DB_NAME)
 
     # properties
     DEBUG = True
