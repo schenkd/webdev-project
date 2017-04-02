@@ -1,0 +1,10 @@
+# general
+.*
+~*
+
+# virtuelenv
+venv/
+
+# PyCharm
+__pycache__/
+__py*
