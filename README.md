@@ -11,7 +11,7 @@ Wir haben uns für eine Arzneimittel-Lieferengpass App entschieden
 * Stakeholder die diesen Informationen benötigen werden darüber informiert
 * Arzneimittel werden in zwei Klassen kategoriersiert
 
-### virtualenv requirements.txt
+### virtualenv
      
 ```bash
 $  virtualenv -p $(which python3) venv
@@ -30,3 +30,4 @@ $  pip install -r requirements.txt
 * Flask Micro-Framework
 * Python 3
 * SQLAlchemy ORM
+* Werkzeug Security
