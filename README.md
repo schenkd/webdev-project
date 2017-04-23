@@ -26,8 +26,8 @@ $  pip install -r requirements.txt
 
 ## tech stack
     
-* MySQL Database
+* MongoDB NoSQL
 * Flask Micro-Framework
 * Python 3
-* SQLAlchemy ORM
+* MongoAlchemy ODM
 * Werkzeug Security
