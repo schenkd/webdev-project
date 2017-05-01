@@ -1,3 +1,4 @@
+# ~*~ encoding: utf-8 ~*~
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -17,6 +18,11 @@ class Config:
 
 class DevConfig(Config):
     # database
+    MONGODB_SETTINGS = {
+        'db': 'app',
+        'host': 'localhost',
+        'port': 27017
+    }
 
     # properties
     DEBUG = True
@@ -24,6 +30,11 @@ class DevConfig(Config):
 
 class TestConfig(Config):
     # database
+    MONGODB_SETTINGS = {
+        'db': 'app',
+        'host': 'localhost',
+        'port': 27017
+    }
 
     # properties
     TESTING = True
@@ -31,7 +42,13 @@ class TestConfig(Config):
 
 class WorkingConfig(Config):
     # database
-    pass
+    MONGODB_SETTINGS = {
+        'db': 'app',
+        'host': 'localhost',
+        'port': 27017,
+        'username': '',
+        'password': ''
+    }
 
 
 config = {
