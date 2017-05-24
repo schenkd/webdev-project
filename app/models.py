@@ -41,6 +41,12 @@ class User(UserMixin, db.Document):
         }
     ]
 
+    def generate_password(self, password):
+        return generate_password_hash(password)
+
+    def check_password(self, password_hash, password):
+        return check_password_hash(password_hash, password)
+
     def __repr__(self):
         return '<User %r>' % self.username
 
