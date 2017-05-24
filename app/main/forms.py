@@ -12,10 +12,10 @@ class LoginForm(FlaskForm):
 
 class RegisterForm(FlaskForm):
     email = StringField('email', validators=[DataRequired(), Email()])
-    username = StringField('benutzername', validators=[DataRequired(), Length(min=4, max=30),
+    username = StringField('username', validators=[DataRequired(), Length(min=4, max=30),
                                                    Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0,
                                                           'Nur Buchstaben, Ziffern, Punkte und Unterstriche erlaubt')])
-    password = PasswordField('passwort', validators=[DataRequired(),
-                                                     EqualTo('password2', message='Passwörter nicht identisch.')])
-    password2 = PasswordField('passwort bestätigen', validators=[DataRequired()])
-    submit = SubmitField('register')
+    password = PasswordField('password', validators=[DataRequired(),
+                                                     EqualTo('password2', message='Passwort nicht identisch.')])
+    password2 = PasswordField('password2', validators=[DataRequired()])
+    submit = SubmitField('Sign Up')
