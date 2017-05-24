@@ -1,0 +1,41 @@
+Id;Enr;aktuelle Bescheidart;Arzneimittelbezeichnung;ATC-Code;Beginn Engpass;Datum der letzten Meldung;Ende Engpass;Krankenhausrelevant;Meldungsart;PZN;Verkehrsfähig;Wirkstoffe
+1667;61728;POS-VLG;Penicillin V-ratiopharm® TS 400.000 i.E./5 ml, Pulver zur Herstellung einer Lösung zum Einnehmen;J01CE02;01.03.2017;30.03.2017;-;ja;Erstmitteilung;"03529965 (100ml);  03578188 (200ml)";ja;Phenoxymethylpenicillin-Kalium
+1531;101592;POSITIV;Alkeran 50 mg i.v., Trockensubstanz und Lösungsmittel zur Herstellung einer Injektionslösung oder Infusionslösung;L01AA03;01.12.2015;08.03.2017;-;ja;Änderungsmitteilung;4529192;ja;Melphalan
+1683;101758;POS-VLG;Ampicillin plus Sulbactam Eberth 2g/1 g;J01CR01;01.04.2017;10.04.2017;-;ja;Erstmitteilung;11138687;ja;"Ampicillin; Sulbactam"
+1409;729857;POSITIV;4-DMAP;V03AB27;01.05.2014;09.05.2014;-;-;Erstmitteilung;2057607;ja;4-Dimethyl-aminophenol-hydrochlorid
+1687;2101579;POS-VLG;Erythrocin 500 mg Neo;J01FA01;01.04.2017;28.04.2017;01.04.2018;ja;Erstmitteilung;-;ja;Erythromycinethylsuccinat
+1616;2112806;POS-VLG;Calciumfolinat-Gry 100 mg/10 ml Injektionslösung;V03AF03;01.05.2016;02.11.2016;-;-;Änderungsmitteilung;7691384;ja;Calciumfolinat
+1644;2115512;POS-VLG;Erwinase, 10.000 I.E./Durchstechflasche Pulver zur Herstellung einer Injektionslösung;L01XX02;01.11.2016;16.12.2016;-;ja;Änderungsmitteilung;4953145;ja;Crisantaspase
+1669;2126702;POS-VLG;Calciumfolinat-Gry 200 mg/20 ml Injektionslösung;V03AF03;01.05.2016;02.11.2016;-;-;Änderungsmitteilung;7691409;ja;Calciumfolinat
+1659;2131221;POS-VLG;Adalat Eins 30 mg, Retardtabletten;C08CA05;01.02.2017;21.02.2017;01.09.2017;-;Erstmitteilung;758079;ja;Nifedipin
+1676;2131223;POS-VLG;Adalat Eins 60 mg, Retardtabletten;C08CA05;01.02.2017;21.02.2017;01.09.2017;-;Erstmitteilung;"00758122;  00758085";ja;Nifedipin
+1643;2134136;POS-VLG;Cortirel, Pulver und Lösungsmittel zur Herstellung einer Injektionslösung, 100 Mikrogramm;V04CD;01.11.2016;11.11.2016;01.10.2017;ja;Erstmitteilung;"3648121; 3648138";ja;Corticorelin vom Menschen
+1650;2136335;POS-VLG;Ultiva 1 mg, Pulver zur Herstellung eines Konzentrates zur Herstellung einer Injektions- oder Infusionslösung, 1mg;N01AH06;01.01.2017;22.02.2017;-;ja;Änderungsmitteilung;7428758;ja;Remifentanilhydrochlorid
+1673;2136336;POS-VLG;Ultiva 2 mg, Pulver zur Herstellung eines Konzentrates zur Herstellung einer Injektions- oder Infusionslösung, 2mg;N01AH06;01.01.2017;22.02.2017;-;ja;Änderungsmitteilung;7428764;ja;Remifentanilhydrochlorid
+1674;2136337;POS-VLG;Ultiva 5 mg, Pulver zur Herstellung eines Konzentrates zur Herstellung einer Injektions- oder Infusionslösung, 5mg;N01AH06;01.01.2017;22.02.2017;-;ja;Änderungsmitteilung;7428770;ja;Remifentanilhydrochlorid
+1684;2140743;POS-VLG;Piperacillin Eberth 2 g;J01CA12;01.04.2017;10.04.2017;-;ja;Erstmitteilung;7048286;ja;Piperacillin
+1685;2140744;POS-VLG;Piperacillin Eberth 4 g;J01CA12;01.04.2017;10.04.2017;-;ja;Erstmitteilung;7048317;ja;Piperacillin
+1670;2141348;POS-VLG;Etopophos Durchstechflasche 100 mg;L01CB01;01.08.2016;20.05.2016;01.08.2017;ja;Erstmitteilung;7622207;ja;Etoposidphosphat
+1646;2145815;POS-VLG;Relenza 5 mg/Dosis, einzeldosiertes Pulver zur Inhalation;J05AH01;01.11.2016;28.02.2017;-;-;Änderungsmitteilung;-;ja;Zanamivir
+1668;2149211;POS-VLG;Ampicillin+Sulbactam-ratiopharm 1000/500 mg Vial 5 Pulver zur Herstellung einer Injektionslösung;J01CA01;01.02.2015;26.07.2016;-;ja;Änderungsmitteilung;4807716;ja;"Ampicillin; Sulbactam"
+1505;2149212;POS-VLG;Ampicillin+Sulbactam-ratiopharm 2000/1000 mg Vial 5 Pulver zur Herstellung einer Injektionslösung;J01CA01;01.02.2015;26.07.2016;-;ja;Änderungsmitteilung;4807722;ja;"Ampicillin; Sulbactam"
+1501;2149804;POS-VLG;"L-Thyroxin Henning Tropfen;Tropfen zum Einnehmen, Lösung: 100 Mikrogramm/ml; 1 x 30 ml, 3 x 30 ml";H03AA01;01.01.2015;03.03.2015;-;-;Änderungsmitteilung;"00842331 (1 x 30 ml); 05103064 (3 x 30 ml)";ja;Levothyroxin-Natrium
+1682;2165676;POS-VLG;Ampicillin plus Sulbactam Eberth 1g/0,5 g;J01CR01;01.04.2017;10.04.2017;-;ja;Erstmitteilung;11138664;ja;"Ampicillin; Sulbactam"
+1686;2165677;POSITIV;Imurek i.v. Pulver zur Herstellung einer Infusions- / Injektionslsg;L04AX01;01.04.2017;28.04.2017;01.05.2017;ja;Erstmitteilung;1555214;ja;Azathioprin
+1660;2165941;POS-VLG;Ampicillin und Sulbactam IBI 1 g + 500 mg Pulver zur Herstellung einer Injektionslösung;J01CR01;01.03.2017;01.03.2017;01.12.2017;ja;Erstmitteilung;"5484543 (x 10); 6721769 (x 1)";ja;"Ampicillin; Sulbactam"
+1677;2165942;POS-VLG;Ampicillin und Sulbactam IBI 2 g + 1 g Pulver zur Herstellung einer Injektionslösung;J01CR01;01.03.2017;01.03.2017;01.12.2017;ja;Erstmitteilung;"5484511 (x 10); 6721752 (x 1)";ja;"Ampicillin; Sulbactam"
+1653;2166530;POS-VLG;Piperacillin/Tazobactam-Teva 4 g / 0,5 g Pulver zur Herstellung einer Infusionslösung;J01CR05;01.01.2017;25.01.2017;-;ja;Erstmitteilung;6805472;ja;"Piperacillin; Tazobactam"
+1678;2167690;POS-VLG;Piperacillin und Tazobactam IBISQUS 2 g/0,25 g Pulver zur Herstellung einer Infusionslösung;J01CR05;01.03.2017;01.03.2017;01.12.2017;ja;Erstmitteilung;903021;ja;"Piperacillin; Tazobactam"
+1664;2177029;POS-VLG;Remifentanil Teva 1 mg Pulver für ein Konzentrat zur Herstellung einer Injektions-/Infusionslösung;N01AH06;01.03.2017;15.03.2017;-;ja;Erstmitteilung;8837401;ja;Remifentanilhydrochlorid
+1679;2177030;POS-VLG;Remifentanil Teva 2 mg Pulver für ein Konzentrat zur Herstellung einer Injektions-/Infusionslösung;N01AH06;01.03.2017;15.03.2017;-;ja;Erstmitteilung;8837418;ja;Remifentanilhydrochlorid
+1680;2177031;POS-VLG;Remifentanil Teva 5 mg Pulver für ein Konzentrat zur Herstellung einer Injektions-/Infusionslösung;N01AH06;01.03.2017;15.03.2017;-;ja;Erstmitteilung;8837424;ja;Remifentanilhydrochlorid
+1651;2180102;POS-VLG;Esmocard Lyo 2500 mg Pulver Pulver zur Herstellung einer Infusionslösung;C07AB09;01.01.2017;28.12.2016;01.08.2017;ja;Erstmitteilung;11162562;ja;Esmololhydrochlorid
+1652;2701183;POS-VLG;DepoCyte 50 mg Injektionssuspension;L01BC01;01.02.2017;28.04.2017;-;ja;Änderungsmitteilung;4722084;ja;Cytarabin
+1518;2701870;POS-VLG;Induct Os 1,5 mg/ml Pulver, Lösungsmittel und Matrix für Matirx zur Implantation;M05BC01;01.09.2015;16.01.2017;01.04.2017;ja;Änderungsmitteilung;11069609;ja;Dibotermin alfa
+1681;2705793;POSITIV;Topotecan Teva 1 mg/ml Konzentrat zur Herstellung einer Infusionslösung - OP(1x1ml);L01XX17;01.03.2017;20.03.2017;-;ja;Erstmitteilung;9303305;ja;Topotecan
+1665;2705794;POSITIV;Topotecan Teva 1 mg/ml Konzentrat zur Herstellung einer Infusionslösung - OP(5x1ml);L01XX17;01.03.2017;20.03.2017;-;ja;Erstmitteilung;9303305;ja;Topotecan
+1671;2705795;POSITIV;Topotecan Teva 4 mg/4 ml Konzentrat zur Herstellung einer Infusionslösung - OP(1x4ml);L01XX17  ;01.06.2016;20.03.2017;-;ja;Änderungsmitteilung;9303311;ja;Topotecan
+1627;2705796;POSITIV;Topotecan Teva 4 mg/4 ml Konzentrat zur Herstellung einer Infusionslösung - OP(5x4ml);L01XX17  ;01.06.2016;20.03.2017;-;ja;Änderungsmitteilung;9303311;ja;Topotecan
+1658;2708676;POSITIV;NULOJIX 250 mg Pulver für ein Konzentrat zur Herstellung einer Infusionslösung - OP869.4mg;L04AA28;01.02.2017;29.03.2017;01.12.2017;ja;Änderungsmitteilung;9074158;ja;Belatacept
+1661;2167689;POS-VLG;Piperacillin und Tazobactam IBISQUS 2 g/0,25 g Pulver zur Herstellung einer Infusionslösung;J01CR05;01.03.2017;01.03.2017;01.12.2017;ja;Erstmitteilung;897007;ja;"Piperacillin; Tazobactam"
+1675;2708677;POSITIV;NULOJIX 250 mg Pulver für ein Konzentrat zur Herstellung einer Infusionslösung -OP(2x869.4mg);L04AA28;01.02.2017;29.03.2017;01.12.2017;ja;Änderungsmitteilung;9074164;ja;Belatacept
