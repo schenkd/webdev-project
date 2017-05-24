@@ -3,12 +3,12 @@ from config import config
 from flask import Flask
 from flask_moment import Moment
 from flask_login import LoginManager
-from flask_mongokit import MongoKit
+from flask_mongoengine import MongoEngine
 
 moment = Moment()
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
-db = MongoKit()
+db = MongoEngine()
 
 
 def create_app(config_name):

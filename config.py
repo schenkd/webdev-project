@@ -21,10 +21,13 @@ class DevConfig(Config):
     DEBUG = True
 
     # database
-    MONGODB_HOST = os.environ['mongo_ip']
-    MONGODB_PORT = 9999
-    MONGODB_USERNAME = os.environ['mongo_user']
-    MONGODB_PASSWORD = os.environ['mongo_password']
+    MONGODB_SETTINGS = {
+        'db': 'dev',
+        'host': os.environ['mongo_ip'],
+        'port': 9999,
+        'username': os.environ['mongo_user'],
+        'password': os.environ['mongo_password']
+    }
 
 
 class TestConfig(Config):
