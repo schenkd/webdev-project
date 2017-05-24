@@ -5,44 +5,38 @@ from flask_login import UserMixin, AnonymousUserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
-class Berechtigung:
-    FAVOURITE = 0x01
-    WRITE_ENGPASS = 0x04
-    MODERATE = 0x08
-    FACHABTEILUNG = 0x80
-
-
 class User(UserMixin, db.Document):
     """ Modell für den Standard-User """
-    email = db.EmailField(required=True, unique=True)
-    password_hash = db.StringField()
-    user_name = db.StringField(max_length=50, required=True, unique=True)
-    first_name = db.StringField(max_length=50)
-    last_name = db.StringField(max_length=50)
-    member_since = db.DateTimeField(default=datetime.utcnow)
-    last_seen = db.DateTimeField(default=datetime.utcnow)
-
-    meta = {
-        'indexes': ['email', 'user_name']
+    __collection__ = 'user'
+    structure = {
+        'email': db.unicode,
+        'username': db.unicode,
+        'password_hash': db.unicode,
+        'firstname': db.unicode,
+        'lastname': db.unicode,
+        'member_since': db.datetime,
+        'last_seen': db.datetime
     }
+    required_fields = ['email', 'password_hash', 'username']
+    default_values = {'member_since': datetime.utcnow()}
+    use_dot_notation = True
 
     def ping(self):
         self.last_seen = datetime.utcnow()
-        db.User.save(self)
+        self.save()
 
     @property
     def password(self):
         raise AttributeError('Passwort ist nicht lesbar!')
 
-    @password.setter
-    def password(self, password):
-        self.password_hash = generate_password_hash(password)
+    def password_hash(self, password):
+        return generate_password_hash(password)
 
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
     def __repr__(self):
-        return 'User %r' % self.user_name
+        return '<User %r>' % self.username
 
 
 class Arzneimittel(db.Document):
@@ -89,3 +83,6 @@ class AnonymousUser(AnonymousUserMixin):
         return False
 
 login_manager.anonymous_user = AnonymousUser
+
+# For using the document model we must register it with the connection
+db.register([User])
