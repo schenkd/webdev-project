@@ -5,35 +5,41 @@ from flask_login import UserMixin, AnonymousUserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
+@db.register
 class User(UserMixin, db.Document):
     """ Modell für den Standard-User """
+    __database__ = 'auth'
     __collection__ = 'user'
+
+    # Dokumentstruktur
     structure = {
         'email': db.unicode,
         'username': db.unicode,
         'password_hash': db.unicode,
         'firstname': db.unicode,
         'lastname': db.unicode,
-        'member_since': db.datetime,
-        'last_seen': db.datetime
+        'member_since': datetime,
+        'last_seen': datetime
     }
+
+    # Pflichtfelder
     required_fields = ['email', 'password_hash', 'username']
-    default_values = {'member_since': datetime.utcnow()}
+
+    # Standardwerte
+    default_values = {
+        'member_since': datetime.utcnow
+    }
+
+    # Ermöglicht Punktnotation z.B. User.email
     use_dot_notation = True
 
-    def ping(self):
-        self.last_seen = datetime.utcnow()
-        self.save()
-
-    @property
-    def password(self):
-        raise AttributeError('Passwort ist nicht lesbar!')
-
-    def password_hash(self, password):
-        return generate_password_hash(password)
-
-    def verify_password(self, password):
-        return check_password_hash(self.password_hash, password)
+    # Definiert den Index
+    indexes = [
+        {
+            'fields': ['email', 'username'],
+            'unique': True
+        }
+    ]
 
     def __repr__(self):
         return '<User %r>' % self.username
@@ -83,6 +89,3 @@ class AnonymousUser(AnonymousUserMixin):
         return False
 
 login_manager.anonymous_user = AnonymousUser
-
-# For using the document model we must register it with the connection
-db.register([User])
