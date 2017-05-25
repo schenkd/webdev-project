@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
 
@@ -58,6 +58,14 @@
 	    </div>
   	</div>
 
+  	<!--Suche-->
+    <div class="ui center search">
+        <div class="ui fluid icon input">
+            <input class="prompt" type="text" placeholder="Suche...">
+            <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+    </div>
 
 	 <!--Engpass Liste-->
 	 <div class="ui very padded segment">
@@ -329,17 +337,7 @@
 		</div>
 		<p></p>
 	</div>
-    	<div class="ui inverted vertical stripe quote segment">
-	    <div class="ui equal width stackable internally celled grid">
-    <div class="center aligned row">
-    	<div class="ui center search">
-    	    <div class="ui icon input">
-    	        <input class="prompt" type="text" placeholder="Suche...">
-    	        <i class="search icon"></i>
-    	    </div>
-    	    <div class="results"></div>
-    	</div>
-    </div>
-        	</div>
-    </div>
+
+
+
 {% endblock %}

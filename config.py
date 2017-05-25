@@ -6,7 +6,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config:
     # security
     WTF_CSRF_ENABLED = True
-    SECRET_KEY = os.getenv('SECRET_KEY') or 'wadehaddedudenda'
+    SECRET_KEY = 'wadehaddedudenda'
 
     # properties
     FLASKY_POSTS_PER_PAGE = 10
@@ -17,37 +17,35 @@ class Config:
 
 
 class DevConfig(Config):
-    # database
-    MONGODB_SETTINGS = {
-        'db': 'app',
-        'host': '0.0.0.0',
-        'port': 27017
-    }
-
     # properties
     DEBUG = True
 
-
-class TestConfig(Config):
     # database
     MONGODB_SETTINGS = {
-        'db': 'app',
-        'host': '0.0.0.0',
+        'db': 'dev',
+        'host': '192.168.178.99',
         'port': 27017
     }
 
+
+class TestConfig(Config):
     # properties
     TESTING = True
+
+    # database
+    MONGODB_SETTINGS = {
+        'db': 'test',
+        'host': '192.168.178.99',
+        'port': 27017
+    }
 
 
 class WorkingConfig(Config):
     # database
     MONGODB_SETTINGS = {
-        'db': 'app',
-        'host': '0.0.0.0',
-        'port': 27017,
-        'username': 'root',
-        'password': 'wadehaddedudenda'
+        'db': 'lieferengpassdb',
+        'host': '192.168.178.99',
+        'port': 27017
     }
 
 

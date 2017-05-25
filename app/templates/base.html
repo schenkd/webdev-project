@@ -8,39 +8,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
         <!-- Site Properties -->
-        <title>Homepage - Semantic</title>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/semantic-ui/semantic.css') }}">
+        <title>Arzneimittel-Lieferengpass</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/semantic-ui/semantic.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
 
         <!-- Srcitpe -->
         <script src="{{ url_for('static', filename='assets/jquery.js') }}"></script>
-        <script src="{{ url_for('static', filename='assets/semantic-ui/semantic.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/semantic-ui/semantic.min.js') }}"></script>
         <script src="{{ url_for('static', filename='js/base.js') }}"></script>
     </head>
 
     <body class="pushable">
 
         <!-- Following Menu -->
-        <div class="ui large top fixed menu transition hidden">
-            <div class="item">
-                <a href="{{ url_for('main.index') }}"><img class="ui mini image" src="{{ url_for('static', filename='img/favicon.png') }}"></a>
-                <!-- Sidebar Menu -->
-                <div class="ui vertical sidebar menu right">
-                    <a href="{{ url_for('main.index') }}" class=" blue active item">Home</a>
-                    <a class="item">Work</a>
-                    <a class="item">Company</a>
-                    <a class="item">Careers</a>
-                    <a href="{{ url_for('main.login') }}" class="item">Login</a>
-                    <a href="{{ url_for('main.logout') }}" class="item">Logput</a>
-                </div>
-            </div>
-
-            <div class="right menu">
-                <a class="toc item">
-                    <i class="sidebar icon"></i>
-                </a>
-            </div>
-        </div>
+        {% include '_menu.html' %}
 
         <!-- Page Contents -->
         <div class="pusher">
@@ -73,34 +54,8 @@
             {% endblock %}
 
             <!-- Footer -->
-            <div class="ui inverted vertical footer segment">
-                <div class="ui container">
-                    <div class="ui stackable inverted divided equal height stackable grid">
-                        <div class="three wide column">
-                            <h4 class="ui inverted header">About</h4>
-                            <div class="ui inverted link list">
-                                <a href="#" class="item">Sitemap</a>
-                                <a href="#" class="item">Contact Us</a>
-                                <a href="#" class="item">Religious Ceremonies</a>
-                                <a href="#" class="item">Gazebo Plans</a>
-                            </div>
-                        </div>
-                        <div class="three wide column">
-                            <h4 class="ui inverted header">Services</h4>
-                            <div class="ui inverted link list">
-                                <a href="#" class="item">Banana Pre-Order</a>
-                                <a href="#" class="item">DNA FAQ</a>
-                                <a href="#" class="item">How To Access</a>
-                                <a href="#" class="item">Favorite X-Men</a>
-                            </div>
-                        </div>
-                        <div class="seven wide column">
-                            <h4 class="ui inverted header">Footer Header</h4>
-                            <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% include '_footer.html' %}
+
         </div>
     </body>
 </html>

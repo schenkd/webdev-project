@@ -1,3 +1,4 @@
+
 .hidden.menu {
   display: none;
 }
@@ -185,4 +186,8 @@
 .ui.table tr.versorgungsrel:hover, .ui.table td.versorgungsrel:hover {
     background: #004f80 !important;
     color: #FFFFFF !important;
+}
+
+.ui.search .prompt {
+    border-radius: 0rem;
 }

@@ -1,33 +1,41 @@
 # ~*~ encoding: utf-8 ~*~
-from . import main
-from flask import flash, redirect, render_template, request, url_for
-from flask_login import (current_user, login_required, login_user, logout_user)
-from .forms import (LoginForm)
-
-
-@main.route('/login', methods=['GET', 'POST'])
-def login():
-    """Log in an existing user."""
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
-        if user is not None and user.password_hash is not None and user.verify_password(form.password.data):
-            login_user(user, form.remember_me.data)
-            flash('You are now logged in. Welcome back!', 'success')
-            return redirect(request.args.get('main/index.html'))
-        else:
-            flash('Invalid email or password.', 'form-error')
-    return render_template('main/login.html', form=form)
-
-
-@main.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    flash('You have been logged out.', 'info')
-    return render_template('main/index.html')
+from app.main import main
+from flask import render_template, request, flash, redirect, url_for
+from app.main.forms import EngpassForm
+from app.models import Engpass, User
+from flask_login import login_required, current_user
 
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('main/index.html')
+    if current_user.is_authenticated:
+        current_user.update_last_seen()
+    return render_template('index.html')
+
+
+@main.route('/engpass', methods=['GET', 'POST'])
+def engpass():
+    form = EngpassForm()
+    if form.validate_on_submit():
+        engpass = Engpass(
+            marketability=request.form['marketability'],
+            alternative=request.form['alternative'],
+            inform_expert_group=request.form['inform_expert_group'],
+            hospital=request.form['hospital'],
+            other_reasons=request.form['other_reasons'],
+            telephon=request.form['telephon'],
+            email=request.form['email'],
+            end=request.form['end'],
+            enr=request.form['enr'],
+            reason=request.form['reason']
+        )
+        engpass.save()
+        flash('Engpass wurde gemeldet.')
+        return redirect(url_for('main.index'))
+    return render_template('hersteller/engpass_form.html', form=form)
+
+
+@main.route('/verwaltung', methods=['GET', 'POST'])
+def verwaltung():
+    unauthorized_users = User.objects(authorized=False)
+    return render_template('intern/verwaltung.html', unauthorized_users=unauthorized_users)

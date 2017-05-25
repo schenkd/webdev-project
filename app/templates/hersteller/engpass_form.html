@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% import 'macros/form_macros.html' as f %}
+
+{% block content %}
+
+    <!--Highlight-->
+    <div class="ui vertical stripe segment">
+        <div class="ui middle aligned stackable grid container">
+            <div class="aligned column">
+                <form class="ui massive form" method="post">
+                    {{ form.hidden_tag() }}
+                    <div class="ui equal width form">
+                        <h4 class="ui dividing header">Kennzahlen zum Arzneimittel</h4>
+                        <div class="two fields">
+                            <div class="field">
+                                <label>Arzneimittelnummer</label>
+                                {{ form.enr(placeholder='ENR') }}
+                            </div>
+                            <div class="field">
+                                <label>Pharmazentralnummer</label>
+                                {{ form.enr(placeholder='PZN') }}
+                            </div>
+                        </div>
+                        <h4 class="ui dividing header">Informationen zum Ausmaß des Engpasses</h4>
+                        <div class="fields">
+                            <div class="field">
+                                <div class="ui toggle checkbox">
+                                    {{ form.alternative() }}
+                                    <label>Existieren Alternativpräperate?</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui toggle checkbox">
+                                    {{ form.inform_expert_group() }}
+                                    <label>Wurden Informationen an Fachkreise gegeben?</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui toggle checkbox">
+                                    {{ form.hospital() }}
+                                    <label>Ist das Medikament krankenhausrelevant?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="ui dividing header">Meldungshistorie</h4>
+                        <div class="fields">
+                            <div class="field">
+                                <label>Letzte Meldung</label>
+                                {{ form.enr(placeholder='Datum') }}
+                            </div>
+                            <div class="field">
+                                <label>Erstmeldung</label>
+                                {{ form.enr(placeholder='Datum') }}
+                            </div>
+                            <div class="field">
+                                <label>Voraussichtliches Ende des Engpasses</label>
+                                {{ form.enr(placeholder='Datum') }}
+                            </div>
+                        </div>
+                        <h4 class="ui dividing header">Engpass Gründe</h4>
+                        <div class="fields">
+                            <div class="field">
+                                <label>Engpass-Grund</label>
+                                <div class="ui left labeled input">
+                                    {{ form.reason() }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fields">
+                            <div class="field">
+                                <label>Sonstige Gründe für den Engpass</label>
+                                <div class="ui left labeled input">
+                                    <div class="ui label">
+                                        <i class="lock blue icon"></i>
+                                    </div>
+                                    {{ form.other_reasons(rows="2") }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fields">
+                            {{ form.submit(class_='ui fluid large blue submit button') }}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

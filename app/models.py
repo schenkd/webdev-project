@@ -5,80 +5,59 @@ from flask_login import UserMixin, AnonymousUserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
-class Berechtigung:
-    FAVOURITE = 0x01
-    WRITE_ENGPASS = 0x04
-    MODERATE = 0x08
-    FACHABTEILUNG = 0x80
+@login_manager.user_loader
+def load_user(user_id):
+    return User.objects.get(id=user_id)
 
 
 class User(UserMixin, db.Document):
-    """ Modell für den Standard-User """
-    email = db.EmailField(required=True, unique=True)
+    """ Schema für den User Document """
+    email = db.EmailField(unique=True)
     password_hash = db.StringField()
-    user_name = db.StringField(max_length=50, required=True, unique=True)
-    first_name = db.StringField(max_length=50)
-    last_name = db.StringField(max_length=50)
     member_since = db.DateTimeField(default=datetime.utcnow)
+    firstname = db.StringField()
+    lastname = db.StringField()
+    authorized = db.BooleanField(default=False)
+    permission = db.StringField()
     last_seen = db.DateTimeField(default=datetime.utcnow)
 
-    meta = {
-        'indexes': ['email', 'user_name']
-    }
-
-    def ping(self):
-        self.last_seen = datetime.utcnow()
-        db.User.save(self)
-
-    @property
-    def password(self):
-        raise AttributeError('Passwort ist nicht lesbar!')
-
-    @password.setter
-    def password(self, password):
-        self.password_hash = generate_password_hash(password)
+    @staticmethod
+    def generate_password(password):
+        return generate_password_hash(password)
 
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-    def __repr__(self):
-        return 'User %r' % self.user_name
-
-
-class Arzneimittel(db.Document):
-    """ Modell für die Arzneimittel """
-    pzn = db.DecimalField(required=True, unique=True)
-    name = db.StringField(required=True, unique=True)
-    beschreibung = db.StringField()
-    hersteller = db.StringField(required=True)
-    gruppe = db.StringField(required=True)
-    keywords = db.ListField()
-    wirkstoff = db.ListField(required=True)
-    darreichungsform = db.StringField()
-
-    meta = {
-        'indexes': ['pzn', 'name', 'supplier', 'group', 'keywords', 'substance']
-    }
+    def update_last_seen(self):
+        self.last_seen = datetime.utcnow()
+        self.save()
 
     def __repr__(self):
-        return 'Arzneimittel %r' % self.name
+        return '<User {}>'.format(self.username)
 
 
 class Engpass(db.Document):
-    """ Modell für die gemeldeten Engpässe """
-    autor = db.ReferenceField(User)
-    meldung = db.StringField()
-    status = db.IntField(required=True)
-    start = db.DateTimeField(default=datetime.utcnow)
-    ende = db.DateTimeField()
-    arzneimittel = db.ReferenceField(Arzneimittel)
-
-    meta = {
-        'indexes': ['start', 'arzneimittel']
-    }
+    """ Schema für das Engpass Document """
+    pzn = db.StringField()
+    atc_code = db.StringField()
+    marketability = db.BooleanField(required=True)
+    alternative = db.BooleanField(required=True)
+    inform_expert_group = db.BooleanField(required=True)
+    hospital = db.BooleanField(required=True)
+    initial_report = db.DateTimeField(default=datetime.utcnow)
+    other_reasons = db.StringField()
+    owner = db.StringField(required=True)
+    telephon = db.StringField(required=True)
+    email = db.StringField(required=True)
+    substance = db.StringField(required=True)
+    last_report = db.DateTimeField()
+    end = db.DateTimeField()
+    drug_title = db.StringField()
+    enr = db.IntField(required=True)
+    reason = db.StringField()
 
     def __repr__(self):
-        return 'Engpass von %r' % self.autor
+        return '<Engpass {}>'.format(self.enr)
 
 
 class AnonymousUser(AnonymousUserMixin):
