@@ -57,6 +57,26 @@
 
                             <div class="ui left labeled input">
                                 <div class="ui label">
+                                    <i class="user blue icon"></i>
+                                </div>
+                                {{ form.firstname(placeholder="Vorname") }}
+                            </div>
+
+                        </div>
+                        <div class="field">
+
+                            <div class="ui left labeled input">
+                                <div class="ui label">
+                                    <i class="user blue icon"></i>
+                                </div>
+                                {{ form.lastname(placeholder="Nachname") }}
+                            </div>
+
+                        </div>
+                        <div class="field">
+
+                            <div class="ui left labeled input">
+                                <div class="ui label">
                                     <i class="lock blue icon"></i>
                                 </div>
                                 {{ form.password(placeholder="Password") }}
@@ -70,6 +90,16 @@
                                     <i class="lock blue icon"></i>
                                 </div>
                                 {{ form.password2(placeholder="Password wiederholen") }}
+                            </div>
+
+                        </div>
+                        <div class="field">
+
+                            <div class="ui left labeled input">
+                                <div class="ui label">
+                                    <i class="lock blue icon"></i>
+                                </div>
+                                {{ form.permission() }}
                             </div>
 
                         </div>

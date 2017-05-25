@@ -3,11 +3,13 @@ from app.main import main
 from flask import render_template, request, flash, redirect, url_for
 from app.main.forms import EngpassForm
 from app.models import Engpass
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
+    if current_user.is_authenticated():
+        current_user.update_last_seen()
     return render_template('index.html')
 
 
@@ -30,4 +32,9 @@ def engpass():
         engpass.save()
         flash('Engpass wurde gemeldet.')
         return redirect(url_for('main.index'))
-    return render_template('engpass.html', form=form)
+    return render_template('hersteller/engpass_form.html', form=form)
+
+
+@main.route('/verwaltung', methods=['GET', 'POST'])
+def verwaltung():
+    return render_template('intern/verwaltung.html')

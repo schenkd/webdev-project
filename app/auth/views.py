@@ -3,7 +3,7 @@ from app.auth import auth
 from app.models import User
 from app.auth.forms import LoginForm, RegisterForm
 from flask import render_template, request, redirect, url_for, flash
-from flask_login import login_user, login_required, logout_user, current_user
+from flask_login import login_user, login_required, logout_user
 
 
 @auth.route('/login', methods=['GET', 'POST'])
@@ -23,8 +23,10 @@ def register():
     form = RegisterForm()
     if form.validate_on_submit():
         user = User(email=request.form['email'],
-                    username=request.form['username'],
-                    password_hash=User.generate_password(request.form['password']))
+                    firstname=request.form['firstname'],
+                    lastname=request.form['lastname'],
+                    password_hash=User.generate_password(request.form['password']),
+                    permission=request.form['permission'])
         user.save()
         flash('Willkommen {}!'.format(user.username))
         return redirect(url_for('main.index'))

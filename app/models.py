@@ -11,12 +11,15 @@ def load_user(user_id):
 
 
 class User(UserMixin, db.Document):
-    """ Modell für den Standard-User """
-    email = db.EmailField(unique=True, required=True)
-    username = db.StringField(unique=True, required=True)
+    """ Schema für den User Document """
+    email = db.EmailField(unique=True)
     password_hash = db.StringField()
     member_since = db.DateTimeField(default=datetime.utcnow)
-
+    firstname = db.StringField()
+    lastname = db.StringField()
+    authorized = db.BooleanField()
+    permission = db.StringField()
+    last_seen = db.DateTimeField(default=datetime.utcnow)
 
     @staticmethod
     def generate_password(password):
@@ -25,12 +28,16 @@ class User(UserMixin, db.Document):
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+    def update_last_seen(self):
+        self.last_seen = datetime.utcnow()
+        self.save()
+
     def __repr__(self):
         return '<User {}>'.format(self.username)
 
 
 class Engpass(db.Document):
-    """ Modell für den Standard-User """
+    """ Schema für das Engpass Document """
     pzn = db.StringField()
     atc_code = db.StringField()
     marketability = db.BooleanField(required=True)
