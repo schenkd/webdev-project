@@ -12,18 +12,21 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/semantic-ui/semantic.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
 
-        <!-- Srcitpe -->
+        <!-- Scripts -->
         <script src="{{ url_for('static', filename='assets/jquery.js') }}"></script>
         <script src="{{ url_for('static', filename='assets/semantic-ui/semantic.min.js') }}"></script>
         <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+        {{ moment.include_moment() }}
+        {{ moment.lang("de") }}
+
     </head>
 
     <body class="pushable">
 
-        <!-- Following Menu -->
+        <!-- Menu -->
         {% include '_menu.html' %}
 
-        <!-- Page Contents -->
+        <!-- Page -->
         <div class="pusher">
 
             <!-- Seitenkopf -->
@@ -49,7 +52,7 @@
                 </div>
             </div>
 
-            <!-- Load Content -->
+            <!-- Content -->
             {% block content %}
             {% endblock %}
 

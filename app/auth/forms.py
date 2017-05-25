@@ -14,6 +14,10 @@ class LoginForm(FlaskForm):
     password = PasswordField('Passwort', validators=[DataRequired()])
     submit = SubmitField('Login')
 
+    def validate_email(self, field):
+        if not User.objects(email=self.email.data):
+            raise ValidationError('Email ist nicht korrekt!')
+
 
 class RegisterForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
@@ -24,10 +28,6 @@ class RegisterForm(FlaskForm):
     password2 = PasswordField('Passwort bestätigen', validators=[DataRequired()])
     permission = SelectField('Berechtigung', choices=choices, validators=[DataRequired()])
     submit = SubmitField('Register')
-
-    def validate_username(self, field):
-        if User.objects(username=self.username.data):
-            raise ValidationError('Benutzername bereits vergeben!')
 
     def validate_email(self, field):
         if User.objects(email=self.email.data):
