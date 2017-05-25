@@ -8,7 +8,7 @@ from flask_login import login_required, current_user
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
-    if current_user.is_authenticated():
+    if current_user.is_authenticated:
         current_user.update_last_seen()
     return render_template('index.html')
 

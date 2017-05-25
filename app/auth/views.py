@@ -28,7 +28,7 @@ def register():
                     password_hash=User.generate_password(request.form['password']),
                     permission=request.form['permission'])
         user.save()
-        flash('Willkommen {}!'.format(user.username))
+        flash('Willkommen {}!'.format(user.firstname))
         return redirect(url_for('main.index'))
     return render_template('auth/register.html', form=form)
 
