@@ -5,7 +5,7 @@
         <div class="ui vertical sidebar menu right">
 
             {% if current_user.is_authenticated %}
-                <a href="{{ url_for('main.index') }}" class="blue active item">Home - Willkommen {{ current_user.username|capitalize }}</a>
+                <a href="{{ url_for('main.index') }}" class="blue active item">Home - {{ current_user.firstname|capitalize }} {{ current_user.lastname|capitalize }}</a>
             {% else %}
                 <a href="{{ url_for('main.index') }}" class="blue active item">Home</a>
             {% endif %}

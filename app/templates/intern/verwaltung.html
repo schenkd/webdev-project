@@ -5,32 +5,35 @@
 	<!--Highlight-->
     <div class="ui vertical stripe segment">
         <div class="ui middle aligned stackable grid container">
-            <div class="row">
-                <div class="six wide column">
-                    <h3 class="ui header">Verwaltung der Regestierungsanfragen</h3>
-                    <p>Das BfArM stellt der Öffentlichkeit Informationen zu gemeldeten Lieferengpässen zur Verfügung. Die Informationen stammen direkt vom Pharmazeutischen Unternehmer und werden durch Daten aus dem Arzneimittelinformationssystem des Bundes ergänzt. Die Aktualisierung der Datenbank erfolgt automatisiert auf Basis der gemeldeten Informationen.</p>
-                </div>
-                <div class="eight wide right floated column">
-                    {% include 'intern/table.html' %}
-                </div>
-              </div>
-              <div class="row">
-                <div class="aligned column">
-                    <div class="ui accordion">
-                        <div class="title">
-                            <p><i class="dropdown icon"></i> Das BfArM hat...</p>
-                        </div>
-						<div class="content">
-                            <div class="ui container">
-                                <p class="transition visible" style="display: block !important;">... in der Regel keine weitergehende Information zum Lieferstatus der gelisteten Arzneimittel. Die Einstellung erfolgt unter der alleinigen Verantwortung der jeweiligen Zulassungsinhaber. Bei Rückfragen zu gemeldeten Lieferengpässen wird daher empfohlen, sich direkt an die jeweils angegebene Kontakt-Telefonnummer oder die Kontakt-E-Mailadresse des Pharmazeutischen Unternehmers zu wenden.</p>
-                                <p class="transition visible" style="display: block !important;">Es werden sowohl Arzneimittel in der Zuständigkeit des BfArM wie auch des Paul-Ehrlich-Institutes (PEI) mit Ausnahme der Humanimpfstoffe in der Anwendung veröffentlicht. Informationen zu Lieferengpässen von Humanimpfstoffen gegen Infektionskrankheiten befinden sich auf der Internetseite des PEI unter: www.pei.de/lieferengpaesse-impfstoffe-human. Der Umfang der dargestellten Daten kann individuell vom Nutzer definiert werden. Ebenso ist es möglich die Lieferengpassmeldungen zu sortieren, zu filtern und herunterzuladen. Auf der ersten Übersichtsweite sind die Basisinformationen zum Lieferengpass zusammengestellt. Durch betätigen des Stiftsymbols können weitere Informationen aufgerufen werden.</p>
-                                <p class="transition visible" style="display: block !important;">Weitere Informationen zu den Aufgaben des BfArM finden Sie unter
-                                <a href="http://www.bfarm.de">www.bfarm.de</a>.</p>
-                            </div>
+
+			<div class="ui six column grid">
+				<div class="four column row">
+					<div class="column">
+						<h3 class="ui header">Verwaltung der Regestierungsanfragen</h3>
+						{% include 'intern/table.html' %}
+					</div>
+				</div>
+
+				<div class="two column">
+					<div class="row">
+						<i class="huge database icon"></i>
+						Statistik
+						<br>
+						<div class="ui statistics">
+							<div class="statistic">
+								<div class="value">
+									<img src="{{ url_for('static', filename='img/topics-sprite-large.png') }}" class="ui circular inline image">
+									42
+								</div>
+								<div class="label">
+									Hersteller
+								</div>
+							</div>
 						</div>
 					</div>
-                </div>
-            </div>
+				</div>
+
+			</div>
         </div>
     </div>
 

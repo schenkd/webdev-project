@@ -17,7 +17,7 @@ class User(UserMixin, db.Document):
     member_since = db.DateTimeField(default=datetime.utcnow)
     firstname = db.StringField()
     lastname = db.StringField()
-    authorized = db.BooleanField()
+    authorized = db.BooleanField(default=False)
     permission = db.StringField()
     last_seen = db.DateTimeField(default=datetime.utcnow)
 
