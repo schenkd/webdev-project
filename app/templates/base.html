@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <!-- Standard Meta -->
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -12,98 +12,102 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/semantic-ui/semantic.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
 
+        <!-- Srcitpe -->
         <script src="{{ url_for('static', filename='assets/jquery.js') }}"></script>
         <script src="{{ url_for('static', filename='assets/semantic-ui/semantic.js') }}"></script>
         <script src="{{ url_for('static', filename='js/base.js') }}"></script>
-
     </head>
-<body class="pushable">
 
-    <!-- Following Menu -->
-    <div class="ui large top fixed menu transition hidden">
-      <div class="item">
-        <a href="{{ url_for('main.index') }}"><img class="ui mini image" src="{{ url_for('static', filename='img/favicon.png') }}"></a>
-        <!-- Sidebar Menu -->
-        <div class="ui vertical sidebar menu right">
-          <a class=" blue active item">Home</a>
-          <a class="item">Work</a>
-          <a class="item">Company</a>
-          <a class="item">Careers</a>
-          <a class="item">Login</a>
-        </div>
-      </div>
-      <div class="right menu">
-        <a class="toc item">
-          <i class="sidebar icon"></i>
-        </a>
-      </div>
-    </div>
+    <body class="pushable">
 
-    <!-- Page Contents -->
-    <div class="pusher">
-      <div class="ui inverted vertical masthead center aligned segment">
-
-        <div class="ui large top secondary inverted pointing menu">
-
-          <div class="item">
-          </div>
-          <div class="right item">
-            <a class="toc item">
-              <i class="sidebar icon"></i>
-            </a>
-          </div>
-        </div>
-        <div class="ui large top secondary inverted pointing menu">
-          <div class="ui header text container bfarmpurple segment">
-            <h1 class="ui header"><a><img class="ui image" src="{{ url_for('static', filename='img/logo-bfarm.svg') }}"></a></h1>
-            <div class="right item">
-
-
-              <div>
-                <h1 class="ui header">Arzneimittellieferengpass-Portal</h1>
-                <h2>Meldung, Information, Klassifizierung, Alternativen</h2>
-              </div>
+        <!-- Following Menu -->
+        <div class="ui large top fixed menu transition hidden">
+            <div class="item">
+                <a href="{{ url_for('main.index') }}"><img class="ui mini image" src="{{ url_for('static', filename='img/favicon.png') }}"></a>
+                <!-- Sidebar Menu -->
+                <div class="ui vertical sidebar menu right">
+                    {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('main.index') }}" class="blue active item">Home - Willkommen {{ current_user.username|capitalize }}</a>
+                    {% else %}
+                        <a href="{{ url_for('main.index') }}" class="blue active item">Home</a>
+                    {% endif %}
+                    <a class="item">Work</a>
+                    <a class="item">Company</a>
+                    <a class="item">Careers</a>
+                    {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('auth.logout') }}" class="item">Logout</a>
+                    {% else %}
+                        <a href="{{ url_for('auth.login') }}" class="item">Login</a>
+                    {% endif %}
+                </div>
             </div>
 
-          </div>
+            <div class="right menu">
+                <a class="toc item">
+                    <i class="sidebar icon"></i>
+                </a>
+            </div>
         </div>
 
-      </div>
+        <!-- Page Contents -->
+        <div class="pusher">
 
-    <!-- Load Content -->
-    {% block content %}
-    {% endblock %}
+            <!-- Seitenkopf -->
+            <div class="ui inverted vertical masthead center aligned segment">
+                <!-- Burgermenu -->
+                <div class="ui large top secondary inverted pointing menu">
+                    <div class="item"></div>
+                    <div class="right item">
+                        <a class="toc item"><i class="sidebar icon"></i></a>
+                    </div>
+                </div>
+                <!-- Seitentitel -->
+                <div class="ui large top secondary inverted pointing menu">
+                    <div class="ui header text container bfarmpurple segment">
+                        <h1 class="ui header"><a><img class="ui image" src="{{ url_for('static', filename='img/logo-bfarm.svg') }}"></a></h1>
+                        <div class="right item">
+                            <div>
+                                <h1 class="ui header">Arzneimittellieferengpass-Portal</h1>
+                                <h2>Meldung, Information, Klassifizierung, Alternativen</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Footer -->
-      <div class="ui inverted vertical footer segment">
-        <div class="ui container">
-          <div class="ui stackable inverted divided equal height stackable grid">
-            <div class="three wide column">
-              <h4 class="ui inverted header">About</h4>
-              <div class="ui inverted link list">
-                <a href="#" class="item">Sitemap</a>
-                <a href="#" class="item">Contact Us</a>
-                <a href="#" class="item">Religious Ceremonies</a>
-                <a href="#" class="item">Gazebo Plans</a>
-              </div>
+            <!-- Load Content -->
+            {% block content %}
+            {% endblock %}
+
+            <!-- Footer -->
+            <div class="ui inverted vertical footer segment">
+                <div class="ui container">
+                    <div class="ui stackable inverted divided equal height stackable grid">
+                        <div class="three wide column">
+                            <h4 class="ui inverted header">About</h4>
+                            <div class="ui inverted link list">
+                                <a href="#" class="item">Sitemap</a>
+                                <a href="#" class="item">Contact Us</a>
+                                <a href="#" class="item">Religious Ceremonies</a>
+                                <a href="#" class="item">Gazebo Plans</a>
+                            </div>
+                        </div>
+                        <div class="three wide column">
+                            <h4 class="ui inverted header">Services</h4>
+                            <div class="ui inverted link list">
+                                <a href="#" class="item">Banana Pre-Order</a>
+                                <a href="#" class="item">DNA FAQ</a>
+                                <a href="#" class="item">How To Access</a>
+                                <a href="#" class="item">Favorite X-Men</a>
+                            </div>
+                        </div>
+                        <div class="seven wide column">
+                            <h4 class="ui inverted header">Footer Header</h4>
+                            <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="three wide column">
-              <h4 class="ui inverted header">Services</h4>
-              <div class="ui inverted link list">
-                <a href="#" class="item">Banana Pre-Order</a>
-                <a href="#" class="item">DNA FAQ</a>
-                <a href="#" class="item">How To Access</a>
-                <a href="#" class="item">Favorite X-Men</a>
-              </div>
-            </div>
-            <div class="seven wide column">
-              <h4 class="ui inverted header">Footer Header</h4>
-              <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-
-</body>
+    </body>
 </html>

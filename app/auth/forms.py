@@ -21,10 +21,10 @@ class RegisterForm(FlaskForm):
     password2 = PasswordField('passwort bestätigen', validators=[DataRequired()])
     submit = SubmitField('register')
 
-    def validate_username(self):
-        if User.objects.get(username=self.username.data):
+    def validate_username(self, field):
+        if User.objects(username=self.username.data):
             raise ValidationError('Benutzername bereits vergeben!')
 
-    def validate_email(self):
-        if User.objects.get(email=self.email.data):
+    def validate_email(self, field):
+        if User.objects(email=self.email.data):
             raise ValidationError('Email bereits vergeben!')

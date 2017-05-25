@@ -20,11 +20,11 @@ def login():
 
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
-    form = RegisterForm(request.form)
+    form = RegisterForm()
     if form.validate_on_submit():
-        user = User(email=form.email.data,
-                    username=form.username.data,
-                    password_hash=User.generate_password(form.password.data))
+        user = User(email=request.form['email'],
+                    username=request.form['username'],
+                    password_hash=User.generate_password(request.form['password']))
         user.save()
         flash('Willkommen {}!'.format(user.username))
         return redirect(url_for('main.index'))
