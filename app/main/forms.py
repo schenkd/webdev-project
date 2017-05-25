@@ -5,12 +5,13 @@ from wtforms.validators import DataRequired, Length, Email, Regexp, EqualTo
 from app.models import Engpass
 
 
-choices = [('Produktionsprobleme', 'Produktionsprobleme'),
-           ('Hersteller wechsel', 'Hersteller wechsel'),
-           ('Änderung des Herstellungsverfahrens', 'Änderung des Herstellungsverfahrens'),
-           ('Unzureichende Produktionskapazitäten', 'Unzureichende Produktionskapazitäten'),
-           ('GMP-Mängel', 'GMP-Mängel'),
-           ('Probleme bei der Endfreigabe', 'Probleme bei der Endfreigabe')]
+choices = [('None', ''),
+           ('0', 'Produktionsprobleme'),
+           ('1', 'Hersteller wechsel'),
+           ('2', 'Änderung des Herstellungsverfahrens'),
+           ('3', 'Unzureichende Produktionskapazitäten'),
+           ('4', 'GMP-Mängel'),
+           ('5', 'Probleme bei der Endfreigabe')]
 
 
 class EngpassForm(FlaskForm):

@@ -13,7 +13,7 @@ class UserModelTestCase(unittest.TestCase):
 
     def test_password_hash(self):
         password_hash = User.generate_password('wadehadedudenda')
-        self.assertTrue(User.check_password(password_hash, 'wadehadedudenda'))
+        self.assertTrue(User.verify_password(password_hash, 'wadehadedudenda'))
 
     def test_user_document(self):
         user = User(

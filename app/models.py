@@ -17,6 +17,7 @@ class User(UserMixin, db.Document):
     password_hash = db.StringField()
     member_since = db.DateTimeField(default=datetime.utcnow)
 
+
     @staticmethod
     def generate_password(password):
         return generate_password_hash(password)

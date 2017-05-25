@@ -39,17 +39,39 @@
                                 <div class="ui label">
                                     <i class="mail blue icon"></i>
                                 </div>
-                                {{ form.enr() }}
+                                {{ form.enr(placeholder='ENR') }}
                             </div>
 
                         </div>
-                        <div class="field">
+                        <div class="inline field">
 
-                            <div class="ui left labeled input">
-                                <div class="ui label">
-                                    <i class="lock blue icon"></i>
-                                </div>
+                            <div class="ui toggle checkbox">
                                 {{ form.marketability() }}
+                                <label>Ist das Medikament verkehrsfähig?</label>
+                            </div>
+
+                        </div>
+                        <div class="inline field">
+
+                            <div class="ui toggle checkbox">
+                                {{ form.alternative() }}
+                                <label>Existieren Alternativpräperate?</label>
+                            </div>
+
+                        </div>
+                        <div class="inline field">
+
+                            <div class="ui toggle checkbox">
+                                {{ form.inform_expert_group() }}
+                                <label>Wurden Informationen an Fachkreise gegeben?</label>
+                            </div>
+
+                        </div>
+                        <div class="inline field">
+
+                            <div class="ui toggle checkbox">
+                                {{ form.hospital() }}
+                                <label>Ist das Medikament krankenhausrelevant?</label>
                             </div>
 
                         </div>
@@ -59,7 +81,7 @@
                                 <div class="ui label">
                                     <i class="lock blue icon"></i>
                                 </div>
-                                {{ form.other_reasons() }}
+                                {{ form.other_reasons(rows="2") }}
                             </div>
 
                         </div>
