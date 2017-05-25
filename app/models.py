@@ -25,7 +25,31 @@ class User(UserMixin, db.Document):
         return check_password_hash(self.password_hash, password)
 
     def __repr__(self):
-        return '<User %r>' % self.username
+        return '<User {}>'.format(self.username)
+
+
+class Engpass(db.Document):
+    """ Modell für den Standard-User """
+    pzn = db.StringField()
+    atc_code = db.StringField()
+    marketability = db.BooleanField(required=True)
+    alternative = db.BooleanField(required=True)
+    inform_expert_group = db.BooleanField(required=True)
+    hospital = db.BooleanField(required=True)
+    initial_report = db.DateTimeField(default=datetime.utcnow)
+    other_reasons = db.StringField()
+    owner = db.StringField(required=True)
+    telephon = db.StringField(required=True)
+    email = db.StringField(required=True)
+    substance = db.StringField(required=True)
+    last_report = db.DateTimeField()
+    end = db.DateTimeField()
+    drug_title = db.StringField()
+    enr = db.IntField(required=True)
+    reason = db.StringField()
+
+    def __repr__(self):
+        return '<Engpass {}>'.format(self.enr)
 
 
 class AnonymousUser(AnonymousUserMixin):
