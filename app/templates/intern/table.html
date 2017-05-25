@@ -7,65 +7,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td class="collapsing">
-                <i class="user icon"></i> David Schenk
-            </td>
-            <td>davidschenk4@gmail.com</td>
-            <td>Hersteller</td>
-            <td class="right aligned collapsing">10 hours ago</td>
-            <td class="right aligned collapsing">
-                <i class="big green add user icon"></i>
-                <i class="big red remove user icon"></i>
-            </td>
-        </tr>
-        <tr>
-            <td class="collapsing">
-                <i class="user icon"></i> David Schenk
-            </td>
-            <td>davidschenk4@gmail.com</td>
-            <td>Hersteller</td>
-            <td class="right aligned collapsing">10 hours ago</td>
-            <td class="right aligned collapsing">
-                <i class="big green add user icon"></i>
-                <i class="big red remove user icon"></i>
-            </td>
-        </tr>
-        <tr>
-            <td class="collapsing">
-                <i class="user icon"></i> David Schenk
-            </td>
-            <td>davidschenk4@gmail.com</td>
-            <td>Hersteller</td>
-            <td class="right aligned collapsing">10 hours ago</td>
-            <td class="right aligned collapsing">
-                <i class="big green add user icon"></i>
-                <i class="big red remove user icon"></i>
-            </td>
-        </tr>
-        <tr>
-            <td class="collapsing">
-                <i class="user icon"></i> David Schenk
-            </td>
-            <td>davidschenk4@gmail.com</td>
-            <td>Hersteller</td>
-            <td class="right aligned collapsing">10 hours ago</td>
-            <td class="right aligned collapsing">
-                <i class="big green add user icon"></i>
-                <i class="big red remove user icon"></i>
-            </td>
-        </tr>
-        <tr>
-            <td class="collapsing">
-                <i class="user icon"></i> David Schenk
-            </td>
-            <td>davidschenk4@gmail.com</td>
-            <td>Hersteller</td>
-            <td class="right aligned collapsing">10 hours ago</td>
-            <td class="right aligned collapsing">
-                <i class="big green add user icon"></i>
-                <i class="big red remove user icon"></i>
-            </td>
-        </tr>
+        {% if unauthorized_users|length %}
+            {% include 'intern/_table_entry.html' %}
+        {% endif %}
     </tbody>
 </table>

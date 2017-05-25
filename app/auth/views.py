@@ -4,6 +4,7 @@ from app.models import User
 from app.auth.forms import LoginForm, RegisterForm
 from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_user, login_required, logout_user
+from mongoengine.errors import NotUniqueError
 
 
 @auth.route('/login', methods=['GET', 'POST'])
@@ -12,8 +13,10 @@ def login():
     if form.validate_on_submit():
         user = User.objects.get(email=request.form['email'])
         if user is not None and user.verify_password(request.form['password']):
-            login_user(user)
-            return redirect(request.args.get('next') or url_for('main.index'))
+            if user.authorized:
+                login_user(user)
+                return redirect(request.args.get('next') or url_for('main.index'))
+            flash('Sorry, ihr Account wurde noch nicht autorisiert')
         flash('Ungültiger Benutzername oder Passwort')
     return render_template('auth/login.html', form=form)
 
@@ -27,7 +30,10 @@ def register():
                     lastname=request.form['lastname'],
                     password_hash=User.generate_password(request.form['password']),
                     permission=request.form['permission'])
-        user.save()
+        try:
+            user.save()
+        except NotUniqueError:
+            flash('NotUniqueError!')
         flash('Willkommen {}!'.format(user.firstname))
         return redirect(url_for('main.index'))
     return render_template('auth/register.html', form=form)

@@ -2,7 +2,7 @@
 from app.main import main
 from flask import render_template, request, flash, redirect, url_for
 from app.main.forms import EngpassForm
-from app.models import Engpass
+from app.models import Engpass, User
 from flask_login import login_required, current_user
 
 
@@ -37,4 +37,5 @@ def engpass():
 
 @main.route('/verwaltung', methods=['GET', 'POST'])
 def verwaltung():
-    return render_template('intern/verwaltung.html')
+    unauthorized_users = User.objects(authorized=False)
+    return render_template('intern/verwaltung.html', unauthorized_users=unauthorized_users)

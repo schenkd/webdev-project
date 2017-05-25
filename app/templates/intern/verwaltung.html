@@ -6,33 +6,17 @@
     <div class="ui vertical stripe segment">
         <div class="ui middle aligned stackable grid container">
 
-
-				<div class="left floated six wide column">
-					<h3 class="ui header">Verwaltung der Registierungsanfragen</h3>
-					{% include 'intern/table.html' %}
-				</div>
-
-				<div class="right floated six wide column">
-					<h3 class="ui header">Statistik</h3><i class="huge database icon"></i>
-					<div class="ui statistics">
-						<div class="statistic">
-							<div class="value">
-								<img src="{{ url_for('static', filename='img/topics-sprite-large.png') }}" class="ui circular inline image">
-								42
-							</div>
-							<div class="label">
-								Hersteller
-							</div>
-						</div>
-					</div>
-				</div>
+			<div class="aligned column">
+				<h3 class="ui header">Verwaltung der Registierungsanfragen</h3>
+				{% include 'intern/table.html' %}
+			</div>
 
         </div>
     </div>
 
 	<!--Engpass Filter-->
 	<div class="ui inverted vertical stripe quote segment">
-	    <div class="ui equal width stackable internally celled grid">
+	    <div class="ui equal width stackable internally centered celled grid">
 		    <div class="center aligned row">
 		        <div class="column valide">
 			    	<h3>"Alle Lieferengpässe"</h3>
