@@ -2,10 +2,11 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, ValidationError
 from wtforms.validators import DataRequired, Length, Email, Regexp, EqualTo
+from app.models import User
 
 
 class LoginForm(FlaskForm):
-    email = StringField('email', validators=[DataRequired(), Email()])
+    email = StringField('email', validators=[DataRequired()])
     password = PasswordField('passwort', validators=[DataRequired()])
     submit = SubmitField('Login')
 
@@ -19,3 +20,11 @@ class RegisterForm(FlaskForm):
                                                      EqualTo('password2', message='Passwörter nicht identisch.')])
     password2 = PasswordField('passwort bestätigen', validators=[DataRequired()])
     submit = SubmitField('register')
+
+    def validate_username(self):
+        if User.objects.get(username=self.username.data):
+            raise ValidationError('Benutzername bereits vergeben!')
+
+    def validate_email(self):
+        if User.objects.get(email=self.email.data):
+            raise ValidationError('Email bereits vergeben!')

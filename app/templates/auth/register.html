@@ -47,9 +47,29 @@
 
                             <div class="ui left labeled input">
                                 <div class="ui label">
+                                    <i class="user blue icon"></i>
+                                </div>
+                                {{ form.username(placeholder="Username") }}
+                            </div>
+
+                        </div>
+                        <div class="field">
+
+                            <div class="ui left labeled input">
+                                <div class="ui label">
                                     <i class="lock blue icon"></i>
                                 </div>
                                 {{ form.password(placeholder="Password") }}
+                            </div>
+
+                        </div>
+                        <div class="field">
+
+                            <div class="ui left labeled input">
+                                <div class="ui label">
+                                    <i class="lock blue icon"></i>
+                                </div>
+                                {{ form.password2(placeholder="Password wiederholen") }}
                             </div>
 
                         </div>
@@ -62,7 +82,7 @@
 
                 <!-- Flash Message -->
                 <div class="ui message">
-                    Noch nicht registriert? <a href="{{ url_for('auth.register') }}">Sign Up</a>
+                    Noch nicht registriert? <a href="{{ url_for('auth.login') }}">Sign In</a>
                 </div>
 
             </div>

@@ -5,6 +5,11 @@ from flask_login import UserMixin, AnonymousUserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.objects.get(id=user_id)
+
+
 class User(UserMixin, db.Document):
     """ Modell für den Standard-User """
     email = db.EmailField(unique=True, required=True)
@@ -16,9 +21,8 @@ class User(UserMixin, db.Document):
     def generate_password(password):
         return generate_password_hash(password)
 
-    @staticmethod
-    def check_password(password_hash, password):
-        return check_password_hash(password_hash, password)
+    def verify_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
     def __repr__(self):
         return '<User %r>' % self.username
