@@ -6,34 +6,27 @@
     <div class="ui vertical stripe segment">
         <div class="ui middle aligned stackable grid container">
 
-			<div class="ui six column grid">
-				<div class="four column row">
-					<div class="column">
-						<h3 class="ui header">Verwaltung der Regestierungsanfragen</h3>
-						{% include 'intern/table.html' %}
-					</div>
+
+				<div class="left floated six wide column">
+					<h3 class="ui header">Verwaltung der Registierungsanfragen</h3>
+					{% include 'intern/table.html' %}
 				</div>
 
-				<div class="two column">
-					<div class="row">
-						<i class="huge database icon"></i>
-						Statistik
-						<br>
-						<div class="ui statistics">
-							<div class="statistic">
-								<div class="value">
-									<img src="{{ url_for('static', filename='img/topics-sprite-large.png') }}" class="ui circular inline image">
-									42
-								</div>
-								<div class="label">
-									Hersteller
-								</div>
+				<div class="right floated six wide column">
+					<h3 class="ui header">Statistik</h3><i class="huge database icon"></i>
+					<div class="ui statistics">
+						<div class="statistic">
+							<div class="value">
+								<img src="{{ url_for('static', filename='img/topics-sprite-large.png') }}" class="ui circular inline image">
+								42
+							</div>
+							<div class="label">
+								Hersteller
 							</div>
 						</div>
 					</div>
 				</div>
 
-			</div>
         </div>
     </div>
 
