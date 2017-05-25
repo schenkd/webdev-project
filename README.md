@@ -26,8 +26,13 @@ $  pip install -r requirements.txt
 
 ## tech stack
     
-* MongoDB NoSQL
-* Flask Micro-Framework
 * Python 3
-* MongoAlchemy ODM
+* MongoDB NoSQL
+* MongoEngine
+* Flask Micro-Framework
+* Jinja2 TemplateEngine
+* Flask-Login
+* WTForms
 * Werkzeug Security
+* Semantic-UI
+* jQuery
