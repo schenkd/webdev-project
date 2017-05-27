@@ -23,7 +23,7 @@ class DevConfig(Config):
     # database
     MONGODB_SETTINGS = {
         'db': 'dev',
-        'host': os.environ['mongo_ip'] or 'localhost',
+        'host': os.environ.get('mongo_ip', 'localhost'),
         'port': 27017
     }
 
@@ -35,7 +35,7 @@ class TestConfig(Config):
     # database
     MONGODB_SETTINGS = {
         'db': 'test',
-        'host': os.environ['mongo_ip'] or 'localhost',
+        'host': os.environ.get('mongo_ip', 'localhost'),
         'port': 27017
     }
 
@@ -44,7 +44,7 @@ class WorkingConfig(Config):
     # database
     MONGODB_SETTINGS = {
         'db': 'lieferengpassdb',
-        'host': os.environ['mongo_ip'] or 'localhost',
+        'host': os.environ.get('mongo_ip', 'localhost'),
         'port': 27017
     }
 

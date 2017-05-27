@@ -19,9 +19,9 @@
                 <a href="{{ url_for('auth.register') }}" class="item">Registrieren</a>
             {% endif %}
 
-            {% if current_user.is_authenticated and current_user.permission == '1' %}
+            {% if current_user.is_authenticated and current_user.permission == '0' %}
                 <a href="{{ url_for('main.engpass') }}" class="item">Meine Engpässe</a>
-            {% elif current_user.is_authenticated and current_user.permission == '0' %}
+            {% elif current_user.is_authenticated and current_user.permission == '1' %}
                 <a href="{{ url_for('main.verwaltung') }}" class="item">Verwaltung</a>
             {% endif %}
 
