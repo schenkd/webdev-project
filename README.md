@@ -23,13 +23,13 @@ $  sudo apt-get update
 $  sudo apt-get install -y mongodb-org
 ```
 
-#### create a unit file to manage the MongoDB   
+#### Erstellen einer Unit file zum steuern der MongoDB (Ubuntu 16.04)  
     
 ```bash
 $  sudo nano /etc/systemd/system/mongodb.service
 ```
 
-Content of the mongodb.service file
+Inhalt der mongodb.service
 ```bash
 [Unit]
 Description=High-performance, schema-free document-oriented database
@@ -61,7 +61,7 @@ $  source venv/bin/activate
 $  pip install -r requirements.txt
 ```
 
-### enviroment variabels
+### Umgebungsvariablen
    
 ```bash
 $  export SECRET_KEY="<secret-key>"
@@ -72,7 +72,7 @@ $  export mongo_ip="<mongodb-ip>"
 ## tech stack
     
 * Python 3
-* MongoDB NoSQL
+* MongoDB (NoSQL Datenbank)
 * MongoEngine
 * Flask Micro-Framework
 * Jinja2 TemplateEngine

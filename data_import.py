@@ -1,15 +1,17 @@
 # ~*~ encoding: utf-8 ~*~
 from pymongo import MongoClient
 from pandas import read_csv
+from os import getcwd, environ
 from datetime import date
 
 
-mongodb = MongoClient('192.168.178.82', 9999)
+mongodb = MongoClient(environ.get('mongo_ip', 'localhost'), 27017)
 db = mongodb['dev']
 drug_collection = db['drug']
 
-drugs = read_csv('~/Dokumente/bfarm_lieferenpass_meldung.csv', delimiter=';', encoding='iso8859_2').to_dict()
+drugs = read_csv(getcwd() + '/data_import/bfarm_lieferenpass_meldung.csv', delimiter=';', encoding='iso8859_2').to_dict()
 
+# Entfernen nicht benoetigter Spalten
 drugs.pop('Id', None)
 drugs.pop('aktuelle Bescheidart', None)
 drugs.pop('Meldungsart', None)
@@ -38,7 +40,6 @@ for x in range(drugs['Verkehrsfähig'].__len__()):
     """
 
     data['substance'] = drugs['Wirkstoffe'][x].replace(' ', '').split(';')
-    print(data['substance'])
 
     data['enr'] = int(drugs['Enr'][x])
 
