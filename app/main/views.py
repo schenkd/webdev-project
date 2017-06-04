@@ -5,6 +5,7 @@ from app.main.forms import EngpassForm
 from app.models import Engpass, User
 from flask_login import login_required, current_user
 from app.decorators import admin_required
+from datetime import datetime
 
 
 @main.route('/', methods=['GET', 'POST'])
@@ -28,7 +29,7 @@ def engpass():
             other_reasons=request.form['other_reasons'],
             telephone=request.form['telephon'],
             email=request.form['email'] if request.form['email'] is None else current_user.email,
-            end=request.form['end'],
+            end=datetime(request.form['year'], request.form['month'], request.form['day']),
             enr=request.form['enr'],
             reason=request.form['reason']
         )

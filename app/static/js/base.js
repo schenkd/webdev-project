@@ -79,4 +79,5 @@ var content = [
     { title: 'Bahrain' },
     { title: 'Burundi' }
     // etc
+
 ];
