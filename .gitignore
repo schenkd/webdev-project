@@ -9,3 +9,7 @@ venv/
 # PyCharm
 __pycache__/
 
+app/static/img
+*.jpg
+*.png
+*.svg
