@@ -38,7 +38,6 @@ for x in range(drugs['Verkehrsfähig'].__len__()):
     """
 
     data['substance'] = drugs['Wirkstoffe'][x].replace(' ', '').split(';')
-    print(data['substance'])
 
     data['enr'] = int(drugs['Enr'][x])
 
