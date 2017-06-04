@@ -16,8 +16,9 @@ def login():
             if user.authorized:
                 login_user(user)
                 return redirect(request.args.get('next') or url_for('main.index'))
-            flash('Sorry, ihr Account wurde noch nicht autorisiert')
-        flash('Ungültiger Benutzername oder Passwort')
+            flash('Sorry, ihr Account wurde noch nicht autorisiert.')
+    else:
+        flash('Bitte überprüfen Sie ihre Zugangsdaten.')
     return render_template('auth/login.html', form=form)
 
 
