@@ -4,15 +4,30 @@
             <i class="user icon"></i> {{ user.firstname }} {{ user.lastname }}
         </td>
         <td>{{ user.email }}</td>
-        {% if user.permission %}
+        {% if user.permission == 'Hersteller' %}
             <td>Hersteller</td>
-        {% else %}
+        {% elif user.permission == 'Fachabteilung' %}
             <td>Fachabteilung</td>
         {% endif %}
         <td class="right aligned collapsing">{{ moment(user.member_since).fromNow(refresh = True) }}</td>
         <td class="right aligned collapsing">
-            <i class="big green add user icon"></i>
-            <i class="big red remove user icon"></i>
+            <div class="ui buttons">
+                <form method="post" action="{{ url_for('auth.approval') }}">
+                    <input type="hidden" name="email" value="{{ user.email }}"/>
+                    <input type="hidden" name="approval" value="True"/>
+                    <button class="ui green button" type="submit">
+                        Ja&nbsp;&nbsp;&nbsp;
+                    </button>
+                </form>
+                <div class="or" data-text=""></div>
+                <form method="post" action="{{ url_for('auth.approval') }}">
+                    <input type="hidden" name="email" value="{{ user.email }}"/>
+                    <input type="hidden" name="approval" value="False"/>
+                    <button class="ui red button" type="submit">
+                        Nein
+                    </button>
+                </form>
+            </div>
         </td>
     </tr>
 {% endfor %}

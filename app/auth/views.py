@@ -5,6 +5,7 @@ from app.auth.forms import LoginForm, RegisterForm
 from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_user, login_required, logout_user
 from mongoengine.errors import NotUniqueError
+from app.decorators import admin_required
 
 
 @auth.route('/login', methods=['GET', 'POST'])
@@ -46,3 +47,16 @@ def logout():
     logout_user()
     flash('Auf Wiedersehen!')
     return redirect(url_for('main.index'))
+
+
+@auth.route('/approval', methods=['POST'])
+@login_required
+@admin_required
+def approval():
+    user = User.objects.get(email=request.form['email'])
+    if request.form['approval'] == 'True':
+        user.authorized = True
+        user.save()
+    elif request.form['approval'] == 'False':
+        user.delete()
+    return redirect(url_for('main.verwaltung'))
