@@ -11,7 +11,7 @@ from app.decorators import admin_required
 def index():
     if current_user.is_authenticated:
         current_user.update_last_seen()
-    return render_template('index.html')
+    return render_template('main/index.html')
 
 
 @main.route('/engpass', methods=['GET', 'POST'])
@@ -26,7 +26,7 @@ def engpass():
             inform_expert_group=request.form['inform_expert_group'],
             hospital=request.form['hospital'],
             other_reasons=request.form['other_reasons'],
-            telephon=request.form['telephon'],
+            telephone=request.form['telephon'],
             email=request.form['email'] if request.form['email'] is None else current_user.email,
             end=request.form['end'],
             enr=request.form['enr'],

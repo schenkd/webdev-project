@@ -16,4 +16,4 @@ def permission_required(permission):
 
 
 def admin_required(f):
-    return permission_required('1')(f)
+    return permission_required('Fachabteilung')(f)

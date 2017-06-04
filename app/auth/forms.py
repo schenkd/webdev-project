@@ -5,8 +5,8 @@ from wtforms.validators import DataRequired, Length, Email, Regexp, EqualTo
 from app.models import User
 
 
-choices = [('0', 'Hersteller'),
-           ('1', 'Fachabteilung')]
+choices = [('Hersteller', 'Hersteller'),
+           ('Fachabteilung', 'Fachabteilung')]
 
 
 class LoginForm(FlaskForm):

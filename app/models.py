@@ -14,11 +14,11 @@ class User(UserMixin, db.Document):
     """ Schema für den User Document """
     email = db.EmailField(unique=True)
     password_hash = db.StringField()
-    member_since = db.DateTimeField(default=datetime.utcnow)
     firstname = db.StringField()
     lastname = db.StringField()
-    authorized = db.BooleanField(default=False)
     permission = db.StringField()
+    authorized = db.BooleanField(default=False)
+    member_since = db.DateTimeField(default=datetime.utcnow)
     last_seen = db.DateTimeField(default=datetime.utcnow)
 
     @staticmethod
@@ -38,23 +38,30 @@ class User(UserMixin, db.Document):
 
 class Engpass(db.Document):
     """ Schema für das Engpass Document """
+    # string
     pzn = db.StringField()
     atc_code = db.StringField()
+    other_reasons = db.StringField()
+    owner = db.StringField()
+    telephone = db.StringField()
+    email = db.StringField()
+    substance = db.StringField()
+    drug_title = db.StringField()
+    reason = db.StringField()
+
+    # bools
     marketability = db.BooleanField()
     alternative = db.BooleanField()
     inform_expert_group = db.BooleanField()
     hospital = db.BooleanField()
+
+    # datetime
     initial_report = db.DateTimeField(default=datetime.utcnow)
-    other_reasons = db.StringField()
-    owner = db.StringField()
-    telephon = db.StringField()
-    email = db.StringField()
-    substance = db.StringField()
     last_report = db.DateTimeField(default=datetime.utcnow)
     end = db.DateTimeField()
-    drug_title = db.StringField()
+
+    # int
     enr = db.IntField()
-    reason = db.StringField()
 
     def update_last_report(self):
         self.last_report = datetime.utcnow()
@@ -65,9 +72,6 @@ class Engpass(db.Document):
 
 
 class AnonymousUser(AnonymousUserMixin):
-    def can(self, permissions):
-        return False
-
     def is_administrator(self):
         return False
 

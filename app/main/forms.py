@@ -6,22 +6,27 @@ from app.models import Engpass
 
 
 choices = [('None', ''),
-           ('0', 'Produktionsprobleme'),
-           ('1', 'Hersteller wechsel'),
-           ('2', 'Änderung des Herstellungsverfahrens'),
-           ('3', 'Unzureichende Produktionskapazitäten'),
-           ('4', 'GMP-Mängel'),
-           ('5', 'Probleme bei der Endfreigabe')]
+           ('Produktionsprobleme', 'Produktionsprobleme'),
+           ('Hersteller wechsel', 'Hersteller wechsel'),
+           ('Änderung des Herstellungsverfahrens', 'Änderung des Herstellungsverfahrens'),
+           ('Unzureichende Produktionskapazitäten', 'Unzureichende Produktionskapazitäten'),
+           ('GMP-Mängel', 'GMP-Mängel'),
+           ('Probleme bei der Endfreigabe', 'Probleme bei der Endfreigabe')]
+
+boolean = [(True, 'Ja'),
+           (False, 'Nein')]
 
 
 class EngpassForm(FlaskForm):
-    marketability = BooleanField('Verkehrsfähig', validators=[DataRequired()])
-    alternative = BooleanField('Alternativepräperate', validators=[DataRequired()])
-    inform_expert_group = BooleanField('Info an Fachkreise', validators=[DataRequired()])
-    hospital = BooleanField('Krankhausrelevant', validators=[DataRequired()])
+    # TODO: PZN hinzufügen + marketability weg
+    marketability = SelectField('Verkehrsfähig', choices=boolean)
+    alternative = SelectField('Alternativepräperate', choices=boolean)
+    inform_expert_group = SelectField('Info an Fachkreise', choices=boolean)
+    hospital = SelectField('Krankhausrelevant', choices=boolean)
     other_reasons = TextAreaField('Sonstige Gründe')
     telephon = StringField('Telefon')
     email = StringField('Email')
+    # TODO: Muss noch geändert werden in Day, Month, Year Field
     end = DateTimeField('vsl. Ende')
     enr = IntegerField('ENR', validators=[DataRequired()])
     reason = SelectField('Grund für den Lieferengpass', choices=choices)

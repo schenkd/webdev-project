@@ -1,0 +1,18 @@
+<div class="ui very padded segment">
+    <!--Suche-->
+    <div class="ui horizontal segment">
+        <div class="ui center search">
+            <div class="ui fluid icon input">
+                <input class="prompt" type="text" placeholder="Suche...">
+                <i class="search icon"></i>
+            </div>
+            <div class="results"></div>
+        </div>
+    </div>
+    <div class="ui three stackable cards">
+        {% if engpaesse|length %}
+            {% include 'main/_table_entry.html' %}
+        {% endif %}
+    </div>
+    <p></p>
+</div>

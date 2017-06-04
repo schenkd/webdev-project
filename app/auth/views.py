@@ -10,7 +10,7 @@ from mongoengine.errors import NotUniqueError
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    if form.validate_on_submit():
+    if request.method == 'POST' and form.validate_on_submit():
         user = User.objects.get(email=request.form['email'])
         if user is not None and user.verify_password(request.form['password']):
             if user.authorized:
@@ -25,7 +25,7 @@ def login():
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
-    if form.validate_on_submit():
+    if request.method == 'POST' and form.validate_on_submit():
         user = User(email=request.form['email'],
                     firstname=request.form['firstname'],
                     lastname=request.form['lastname'],
