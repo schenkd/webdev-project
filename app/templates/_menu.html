@@ -10,14 +10,22 @@
                 <a href="{{ url_for('main.index') }}" class="blue active item">Home</a>
             {% endif %}
 
-                <a href="{{ url_for('main.engpass') }}" class="item">Meine Engpässe</a>
-                <a href="{{ url_for('main.verwaltung') }}" class="item">Verwaltung</a>
+                <a class="item">{{ moment().format('LLL') }}</a>
 
             {% if current_user.is_authenticated %}
                 <a href="{{ url_for('auth.logout') }}" class="item">Logout</a>
             {% else %}
                 <a href="{{ url_for('auth.login') }}" class="item">Login</a>
+                <a href="{{ url_for('auth.register') }}" class="item">Registrieren</a>
             {% endif %}
+
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('main.engpass') }}" class="item">Engpass melden</a>
+                {% if current_user.is_authenticated and current_user.permission == '1' %}
+                    <a href="{{ url_for('main.verwaltung') }}" class="item">Benutzer Verwaltung</a>
+                {% endif %}
+            {% endif %}
+
 
         </div>
     </div>

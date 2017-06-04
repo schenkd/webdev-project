@@ -10,25 +10,16 @@ from flask_login import login_required, current_user
 def index():
     if current_user.is_authenticated:
         current_user.update_last_seen()
-    return render_template('index.html')
+    engpaesse = Engpass.objects(marketability='Ja')
+    return render_template('main/index.html', engpaesse=engpaesse)
 
 
 @main.route('/engpass', methods=['GET', 'POST'])
+@login_required
 def engpass():
     form = EngpassForm()
     if form.validate_on_submit():
-        engpass = Engpass(
-            marketability=request.form['marketability'],
-            alternative=request.form['alternative'],
-            inform_expert_group=request.form['inform_expert_group'],
-            hospital=request.form['hospital'],
-            other_reasons=request.form['other_reasons'],
-            telephon=request.form['telephon'],
-            email=request.form['email'],
-            end=request.form['end'],
-            enr=request.form['enr'],
-            reason=request.form['reason']
-        )
+        engpass = Engpass(enr=request.form['enr'],pzn=request.form['pzn'],email=request.form['email'],telephon=request.form['telephon'],owner=request.form['owner'],other_reasons=request.form['other_reasons'],reason=request.form['reason'],end=request.form['end'],initial_report=request.form['initial_report'],last_report=request.form['last_report'],hospital=request.form['hospital'],alternative=str(request.form['alternative'] or 'n'),marketability=str(request.form['marketability'] or 'n'),inform_expert_group=str(request.form['inform_expert_group'] or 'n'),drug_title=request.form['drug_title'],substance=request.form['substance'],atc_code=request.form['atc_code'])
         engpass.save()
         flash('Engpass wurde gemeldet.')
         return redirect(url_for('main.index'))
@@ -36,6 +27,10 @@ def engpass():
 
 
 @main.route('/verwaltung', methods=['GET', 'POST'])
+@login_required
 def verwaltung():
-    unauthorized_users = User.objects(authorized=False)
-    return render_template('intern/verwaltung.html', unauthorized_users=unauthorized_users)
+    if current_user.is_authenticated and current_user.permission == '1':
+        unauthorized_users = User.objects(authorized=False)
+        return render_template('intern/verwaltung.html', unauthorized_users=unauthorized_users)
+    else:
+        return render_template('main/index.html')

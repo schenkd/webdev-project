@@ -4,7 +4,11 @@
 !.gitignore
 
 # virtuelenv
-venv/
+*.jpg
+*.ico
+*.png
+*.svg
+
 
 # PyCharm
 __pycache__/

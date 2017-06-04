@@ -38,23 +38,24 @@ class User(UserMixin, db.Document):
 
 class Engpass(db.Document):
     """ Schema für das Engpass Document """
-    pzn = db.StringField()
-    atc_code = db.StringField()
-    marketability = db.BooleanField(required=True)
-    alternative = db.BooleanField(required=True)
-    inform_expert_group = db.BooleanField(required=True)
-    hospital = db.BooleanField(required=True)
-    initial_report = db.DateTimeField(default=datetime.utcnow)
+    pzn = db.IntField()
+    atc_code = db.StringField(default='ATC-CODE')
+    marketability = db.StringField()
+    alternative = db.StringField()
+    inform_expert_group = db.StringField()
+    hospital = db.StringField()
+    initial_report = db.StringField()
     other_reasons = db.StringField()
-    owner = db.StringField(required=True)
-    telephon = db.StringField(required=True)
-    email = db.StringField(required=True)
-    substance = db.StringField(required=True)
-    last_report = db.DateTimeField()
-    end = db.DateTimeField()
+    owner = db.StringField()
+    telephon = db.StringField()
+    email = db.StringField()
+    substance = db.StringField()
+    last_report = db.StringField()
+    end = db.StringField()
     drug_title = db.StringField()
     enr = db.IntField(required=True)
     reason = db.StringField()
+
 
     def __repr__(self):
         return '<Engpass {}>'.format(self.enr)

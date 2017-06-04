@@ -92,11 +92,11 @@
 .ui.bfarmpurple.segment:not(.inverted) {
   background-color: #FFFFFF !important;
   border-radius: 0rem;
-  opacity: 0.8;
+  opacity: 0.95;
   margin-top: 5em
 }
 .ui.bfarmpurple.segment:not(.inverted) h1, h2{
-  color: #890d48 !important;
+  color: #000000 !important;
 }.ui.inverted.bfarmpurple.segment {
   background-color: #890d48 !important;
   color: #FFFFFF !important;
@@ -190,4 +190,18 @@
 
 .ui.search .prompt {
     border-radius: 0rem;
+}
+
+.ui.blue.button {
+  background-color: #890d48;
+}
+
+.ui.segments.bfarm:not(.horizontal)>.segment:first-child {
+    background-color: #004f80;
+    color: #ffffff;
+}
+
+.ui.segments.bfarm h3 {
+    font-size: 1em;
+    color: #ffffff;
 }

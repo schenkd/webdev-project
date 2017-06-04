@@ -11,6 +11,7 @@
         <title>Arzneimittel-Lieferengpass</title>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/semantic-ui/semantic.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
 
         <!-- Srcitpe -->
         <script src="{{ url_for('static', filename='assets/jquery.js') }}"></script>
@@ -38,7 +39,7 @@
                 <!-- Seitentitel -->
                 <div class="ui large top secondary inverted pointing menu">
                     <div class="ui header text container bfarmpurple segment">
-                        <h1 class="ui header"><a><img class="ui image" src="{{ url_for('static', filename='img/logo-bfarm.svg') }}"></a></h1>
+                        <h1 class="ui header"><a href="{{ url_for('main.index') }}""><img class="ui image" src="{{ url_for('static', filename='img/logo-bfarm.svg') }}"></a></h1>
                         <div class="right item">
                             <div>
                                 <h1 class="ui header">Arzneimittellieferengpass-Portal</h1>
@@ -48,6 +49,17 @@
                     </div>
                 </div>
             </div>
+            
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class="ui message">
+                        {% for message in messages %}
+                            <div>{{ message }}</div>
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+            
 
             <!-- Load Content -->
             {% block content %}

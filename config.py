@@ -23,7 +23,7 @@ class DevConfig(Config):
     # database
     MONGODB_SETTINGS = {
         'db': 'dev',
-        'host': '192.168.178.99',
+        'host': '192.168.33.10',
         'port': 27017
     }
 
@@ -35,7 +35,7 @@ class TestConfig(Config):
     # database
     MONGODB_SETTINGS = {
         'db': 'test',
-        'host': '192.168.178.99',
+        'host': '192.168.33.10',
         'port': 27017
     }
 
@@ -44,7 +44,7 @@ class WorkingConfig(Config):
     # database
     MONGODB_SETTINGS = {
         'db': 'lieferengpassdb',
-        'host': '192.168.178.99',
+        'host': '192.168.33.10',
         'port': 27017
     }
 
