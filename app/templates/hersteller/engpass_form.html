@@ -19,12 +19,10 @@
                                     <label>Arzneimittelnummer</label>
                                     {{ form.enr(placeholder='ENR') }}
                                 </div>
-                                <!--
                                 <div class="ui field segment">
                                     <label>Pharmazentralnummer</label>
-                                    {# {{ form.pzn(placeholder='PZN') }} #}
+                                    {{ form.pzn(placeholder='PZN') }}
                                 </div>
-                                -->
                             </div>
                         </div>
                         <div class="ui segments bfarm">
@@ -41,11 +39,6 @@
                                     <label>Informationen an Fachkreise</label>
                                     {{ form.inform_expert_group(class_='ui fluid dropdown') }}
                                     <label>Wurden Informationen an Fachkreise gegeben?</label>
-                                </div>
-                                <div class="ui field segment">
-                                    <label>Krankhausrelevant</label>
-                                    {{ form.hospital(class_='ui fluid dropdown') }}
-                                    <label>Ist das Medikament krankenhausrelevant?</label>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +95,7 @@
                             <div class="ui two fields horizontal segments">
                                 <div class="ui field segment">
                                     <label>Kontakt Telefon</label>
-                                    {{ form.telephon(placeholder='Telefon') }}
+                                    {{ form.telephone(placeholder='Telefon') }}
                                 </div>
                                 <div class="ui field segment">
                                     <label>Kontakt E-Mail</label>

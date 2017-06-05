@@ -2,7 +2,7 @@
 from app.main import main
 from flask import render_template, request, flash, redirect, url_for
 from app.main.forms import EngpassForm
-from app.models import Engpass, User
+from app.models import Engpass, User, Drug, Producer
 from flask_login import login_required, current_user
 from app.decorators import admin_required
 from datetime import datetime
@@ -19,19 +19,18 @@ def index():
 @login_required
 def engpass():
     form = EngpassForm()
-    if form.validate_on_submit():
+    if request.method == 'POST' and form.validate_on_submit():
         engpass = Engpass(
-            owner='{] {}'.format(current_user.firstname, current_user.lastname),
-            marketability=request.form['marketability'],
+            producer=Producer.objects.get(employee=User.objects.get(email=current_user.email)),
+            drug=Drug.objects.get(enr=request.form['enr']),
+            pzn=request.form['pzn'],
             alternative=request.form['alternative'],
             inform_expert_group=request.form['inform_expert_group'],
-            hospital=request.form['hospital'],
-            other_reasons=request.form['other_reasons'],
             telephone=request.form['telephon'],
             email=request.form['email'] if request.form['email'] is None else current_user.email,
             end=datetime(request.form['year'], request.form['month'], request.form['day']),
-            enr=request.form['enr'],
-            reason=request.form['reason']
+            reason=request.form['reason'],
+            other_reasons=request.form['other_reasons']
         )
         engpass.save()
         flash('Engpass wurde gemeldet.')
