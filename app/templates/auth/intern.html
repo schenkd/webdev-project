@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% import 'macros/form_macros.html' as f %}
+
+{% block content %}
+
+    <!--Highlight-->
+    <div class="ui vertical stripe segment">
+        <div class="ui middle aligned stackable grid container">
+            <div class="row">
+                <div class="eight wide column">
+                    <h3 class="ui header">Register</h3>
+                    <p>Bitte füllen Sie das Registerungsformular vollständig aus.</p>
+                    <form class="ui form" method="post">
+                        {{ form.hidden_tag() }}
+                        <div class="field">
+                            {{ form.email(placeholder="Email") }}
+                        </div>
+                        <div class="field">
+                            {{ form.firstname(placeholder="Vorname") }}
+                        </div>
+                        <div class="field">
+                            {{ form.lastname(placeholder="Nachname") }}
+                        </div>
+                        <div class="field">
+                            {{ form.password(placeholder="Password") }}
+                        </div>
+                        <div class="field">
+                            {{ form.password2(placeholder="Password wiederholen") }}
+                        </div>
+                        <div class="field">
+                            {{ form.department(placeholder="Abteilung") }}
+                        </div>
+                        <div class="field">
+                            {{ form.room(placeholder="Raum") }}
+                        </div>
+                        <div class="field">
+                            {{ form.personal_number(placeholder="Stellenzeichen") }}
+                        </div>
+                        <div class="ui disabled field">
+                            {{ form.permission(placeholder="Berechtigung", value="Fachabteilung") }}
+                        </div>
+                        {{ form.submit(class_='ui fluid large blue submit button') }}
+                    </form>
+                    <div class="ui message">
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div>{{ message }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                </div>
+                <div class="six wide right floated column">
+                    <img src="{{ url_for('static', filename='img/favicon.png') }}" class="ui medium bordered rounded image">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

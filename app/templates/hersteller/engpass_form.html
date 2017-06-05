@@ -32,12 +32,12 @@
                             <div class="ui fields horizontal segments">
                                 <div class="ui field segment">
                                     <label>Alternativpräperate</label>
-                                    {{ form.alternative(class_='ui fluid dropdown') }}
+                                    {{ form.alternative(placeholder='Alternativepräperate',class_='ui fluid dropdown') }}
                                     <label>Existieren Alternativpräperate?</label>
                                 </div>
                                 <div class="ui field segment">
                                     <label>Informationen an Fachkreise</label>
-                                    {{ form.inform_expert_group(class_='ui fluid dropdown') }}
+                                    {{ form.inform_expert_group(placeholder='Info an Fachkreise',class_='ui fluid dropdown') }}
                                     <label>Wurden Informationen an Fachkreise gegeben?</label>
                                 </div>
                             </div>
@@ -49,15 +49,15 @@
                             <div class="ui fields horizontal segments">
                                 <div class="ui field segment">
                                     <label>Tag</label>
-                                    {{ form.day(class_='ui fluid dropdown') }}
+                                    {{ form.day(placeholder='Tag',class_='ui fluid dropdown') }}
                                 </div>
                                 <div class="ui field segment">
                                     <label>Montag</label>
-                                    {{ form.month(class_='ui fluid dropdown') }}
+                                    {{ form.month(placeholder='Monat',class_='ui fluid dropdown') }}
                                 </div>
                                 <div class="ui field segment">
                                     <label>Jahr</label>
-                                    {{ form.year(class_='ui fluid dropdown') }}
+                                    {{ form.year(placeholder='Jahr',class_='ui fluid dropdown') }}
                                 </div>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                                 <div class="ui field segment">
                                     <label>Engpass-Grund</label>
                                     <div class="ui left labeled input">
-                                        {{ form.reason(class_='ui fluid dropdown') }}
+                                        {{ form.reason(placeholder='Grund für den Lieferengpass',class_='ui fluid dropdown') }}
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
                                             <i class="write icon"></i>
                                         </i>
                                         </div>
-                                        {{ form.other_reasons(placeholder='Sonstige Gründe ...') }}
+                                        {{ form.other_reasons(placeholder='Sonstige Gründe') }}
                                     </div>
                                 </div>
                             </div>

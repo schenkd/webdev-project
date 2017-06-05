@@ -41,7 +41,7 @@
                 <!-- Seitentitel -->
                 <div class="ui large top secondary inverted pointing menu">
                     <div class="ui header text container bfarmpurple segment">
-                        <h1 class="ui header"><a><img class="ui image" src="{{ url_for('static', filename='img/logo-bfarm.svg') }}"></a></h1>
+                        <h1 class="ui header"><a href="{{ url_for('main.index') }}""><img class="ui image" src="{{ url_for('static', filename='img/logo-bfarm.svg') }}"></a></h1>
                         <div class="right item">
                             <div>
                                 <h1 class="ui header">Arzneimittellieferengpass-Portal</h1>
@@ -51,6 +51,23 @@
                     </div>
                 </div>
             </div>
+
+            <!--Message-->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        
+                            <div class="ui middle aligned stackable grid container message">
+
+
+                                        <div>{{ message }}</div>
+
+
+                            </div>
+                          
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
 
             <!-- Content -->
             {% block content %}

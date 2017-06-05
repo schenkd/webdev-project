@@ -12,15 +12,26 @@ def load_user(user_id):
 
 class User(UserMixin, db.Document):
     """ Schema für den User Document """
-    email = db.EmailField(unique=True)
+    # string
+    department = db.StringField()
+    room = db.StringField()
+    personal_number = db.StringField()
     password_hash = db.StringField()
     firstname = db.StringField()
     lastname = db.StringField()
     permission = db.StringField()
+    email = db.EmailField(unique=True)
+
+    # bools
     authorized = db.BooleanField(default=False)
+
+    # datetime
     member_since = db.DateTimeField(default=datetime.utcnow)
     last_seen = db.DateTimeField(default=datetime.utcnow)
 
+    # int
+    pnr = db.IntField()
+    
     meta = {
         'indexes': [
             'email',
