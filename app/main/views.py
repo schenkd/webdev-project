@@ -1,8 +1,8 @@
 # ~*~ encoding: utf-8 ~*~
 from app.main import main
 from flask import render_template, request, flash, redirect, url_for
-from app.main.forms import EngpassForm
-from app.models import Engpass, User, Drug, Producer
+from app.main.forms import EngpassForm, ContactForm
+from app.models import Engpass, User, Drug, Producer, Contact
 from flask_login import login_required, current_user
 from app.decorators import admin_required
 from datetime import datetime
@@ -13,6 +13,22 @@ def index():
     if current_user.is_authenticated:
         current_user.update_last_seen()
     return render_template('main/index.html')
+
+
+@main.route('/contact', methods=['GET', 'POST'])
+def contact():
+    form = ContactForm()
+    if current_user.is_authenticated:
+        current_user.update_last_seen()
+    if request.method == 'POST' and form.validate_on_submit():
+        contact = Contact(firstname=request.form['firstname'],
+                          lastname=request.form['lastname'],
+                          telephone=request.form['telephone'],
+                          message=request.form['message'],
+                          email=request.form['email'])
+        contact.save()
+        flash('Ihre Nachricht wurde erfolgreich übermittelt.')
+    return render_template('main/contact.html', form=form)
 
 
 @main.route('/engpass', methods=['GET', 'POST'])

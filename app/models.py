@@ -120,6 +120,25 @@ class Engpass(db.Document):
         return '<Engpass {}>'.format(self.enr)
 
 
+class Contact(db.Document):
+    """ Schema für das Kontakt Document """
+    firstname = db.StringField()
+    lastname = db.StringField()
+    message = db.StringField()
+    telephone = db.StringField()
+    email = db.EmailField()
+    timestamp = db.DateTimeField(default=datetime.utcnow)
+
+    meta = {
+        'indexes': [
+            'email'
+        ]
+    }
+
+    def __repr__(self):
+        return '<Contact {}>'.format(self.email)
+
+
 class AnonymousUser(AnonymousUserMixin):
     def is_administrator(self):
         return False

@@ -1,8 +1,7 @@
 # ~*~ encoding: utf-8 ~*~
 from flask_wtf import FlaskForm
-from wtforms import StringField, DateTimeField, BooleanField, SubmitField, TextAreaField, IntegerField, SelectField
-from wtforms.validators import DataRequired, Length, Email, Regexp, EqualTo
-from app.models import Engpass
+from wtforms import StringField, SubmitField, TextAreaField, IntegerField, SelectField
+from wtforms.validators import DataRequired, Email
 from datetime import datetime
 
 
@@ -49,3 +48,12 @@ class EngpassForm(FlaskForm):
     telephone = StringField('Telefon')
     email = StringField('Email')
     submit = SubmitField('Melden')
+
+
+class ContactForm(FlaskForm):
+    firstname = StringField('Vorname', validators=[DataRequired()])
+    lastname = StringField('Nachname', validators=[DataRequired()])
+    message = TextAreaField('Nachricht')
+    telephone = StringField('Telefon')
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    submit = SubmitField('Abschicken')

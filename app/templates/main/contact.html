@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!--Highlight-->
+    <div class="ui vertical stripe segment">
+        <div class="ui middle aligned stackable grid container">
+            <div class="row">
+                <div class="eight wide column">
+                    <h3 class="ui header">Kontaktformular</h3>
+                    <p>Bitte geben Sie  ihren Namen und Email-Adresse an,<br>um zeitnah eine Rückmeldung von uns zu erhalten.</p>
+                    <form class="ui massive form" method="post">
+                        {{ form.hidden_tag() }}
+                        <div class="ui equal width massive form">
+                            <div class="ui segments bfarm">
+                                <div class="ui segment">
+                                <h3 class="ui header">Kontaktformular</h3>
+                            </div>
+                            <div class="ui two fields horizontal segments">
+                                <div class="ui field segment">
+                                    <label>Vorname</label>
+                                    {{ form.firstname(placeholder='Max') }}
+                                </div>
+                                <div class="ui field segment">
+                                    <label>Nachname</label>
+                                    {{ form.lastname(placeholder='Mustermann') }}
+                                </div>
+                            </div>
+                                <div class="ui two fields horizontal segments">
+                                <div class="ui field segment">
+                                    <label>Telefon</label>
+                                    {{ form.telephone(placeholder='+49228/00000') }}
+                                </div>
+                                <div class="ui field segment">
+                                    <label>E-Mail</label>
+                                    {{ form.email(placeholder='max.mustermann@example.com') }}
+                                </div>
+                            </div>
+                                <div class="ui fields horizontal segments">
+                                    <div class="ui field segment">
+                                        <label>Nachricht</label>
+                                        <div class="ui left labeled input">
+                                            <div class="ui horizontal label">
+                                            <i class="huge icons">
+                                                <i class="big thin circle icon"></i>
+                                                <i class="write icon"></i>
+                                            </i>
+                                        </div>
+                                        {{ form.message(placeholder='Hier schreiben Sie ihre Nachricht ...') }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fields">
+                            {{ form.submit(class_='ui fluid big blue submit button') }}
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="ui message">
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div>{{ message }}</div>
+                                {% endfor %}
+                            {% else %}
+                                Noch nicht registriert? <a href="{{ url_for('auth.register') }}">Sign Up</a>
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                </div>
+                <div class="six wide right floated column">
+                    <img src="{{ url_for('static', filename='img/favicon.png') }}" class="ui medium bordered rounded image">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

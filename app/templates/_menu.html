@@ -11,6 +11,7 @@
             {% endif %}
 
                 <a class="item">{{ moment().format('LLL') }}</a>
+                <a href="{{ url_for('main.contact') }}" class="item">Kontakt</a>
 
             {% if current_user.is_authenticated %}
                 <a href="{{ url_for('auth.logout') }}" class="item">Logout</a>
