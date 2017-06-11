@@ -10,9 +10,10 @@ from datetime import datetime
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
+    engpaesse =Engpass.objects()
     if current_user.is_authenticated:
         current_user.update_last_seen()
-    return render_template('main/index.html')
+    return render_template('main/index.html', engpaesse=engpaesse)
 
 
 @main.route('/contact', methods=['GET', 'POST'])

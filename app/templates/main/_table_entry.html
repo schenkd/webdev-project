@@ -5,9 +5,9 @@
             <img src="{{ url_for('static', filename='img/TB_AM_Lieferengpaesse.jpg') }}">
         </div>
         <div class="content">
-            <a class="header">{{ engpass.drug_title }}</a>
+            <a class="header">{{ engpass.drug.drug_title }}</a>
             <div class="meta">
-                <span class="date">{{ engpass.initial_report }}</span>
+                <span class="date">{{ engpass.initial_report.strftime('%Y-%m-%d %H:%M') }}</span>
                 <span class="date">Erstmeldung</span>
             </div>
         <div class="description">
@@ -27,7 +27,7 @@
                             Wirkstoffe
                         </div>
                         <div class="content active">
-                            <p class="transition visible" style="display: block !important;">{{ engpass.substance }}</p>
+                            <p class="transition visible" style="display: block !important;">{{ engpass.drug.substance }}</p>
                         </div>
                         <div class="title">
                             <i class="dropdown icon"></i>
@@ -38,19 +38,19 @@
                                 <tbody>
                                     <tr>
                                         <td>PZN</td>
-                                        <td>{{ engpass.pzn }}</td>
+                                        <td>{{ engpass.drug.pzn }}</td>
                                     </tr>
                                     <tr>
                                         <td>ATC - Code</td>
-                                        <td>{{ engpass.atc_code }}</td>
+                                        <td>{{ engpass.drug.atc_code }}</td>
                                     </tr>
                                     <tr>
                                         <td>Verkehrsfähig</td>
-                                        <td>{{ engpass.marketability }}</td>
+                                        <td>{{ engpass.drug.marketability }}</td>
                                     </tr>
                                     <tr>
                                         <td>aktuelle Bescheidart</td>
-                                        <td>{{ engpass.marketability }}</td>
+                                        <td>{{ engpass.drug.marketability }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -72,7 +72,7 @@
                                     </tr>
                                     <tr>
                                         <td>Krankenhausrelevant</td>
-                                        <td class="negative"><i class="icon checkmark"></i>{{ engpass.hospital }}</td>
+                                        <td class="negative"><i class="icon checkmark"></i>{{ engpass.drug.hospital }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -86,11 +86,11 @@
                                 <tbody>
                                     <tr>
                                         <td>Letzte Meldung</td>
-                                        <td>{{ engpass.last_report }}</td>
+                                        <td>{{ engpass.last_report.strftime('%Y-%m-%d %H:%M') }}</td>
                                     </tr>
                                     <tr>
                                         <td>Erstmeldung</td>
-                                        <td>{{ engpass.initial_report }}</td>
+                                        <td>{{ engpass.initial_report.strftime('%Y-%m-%d %H:%M') }}</td>
                                     </tr>
                                     <tr>
                                         <td>Grund</td>
@@ -112,7 +112,7 @@
                                 <tbody>
                                     <tr>
                                         <td>Zulassungsinhaber</td>
-                                        <td>{{ engpass.owner }}</td>
+                                        <td>{{ engpass.producer.name }}</td>
                                     </tr>
                                     <tr>
                                         <td>Kontakt Telefon</td>
