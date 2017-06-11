@@ -127,6 +127,10 @@ class Engpass(db.Document):
         ]
     }
 
+    @staticmethod
+    def get_by_enr(enr):
+        return Engpass.objects.get(drug=Drug.objects.get(enr=enr))
+
     def update_last_report(self):
         self.last_report = datetime.utcnow()
         self.save()
