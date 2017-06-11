@@ -24,6 +24,10 @@ class RegisterFormExtern(FlaskForm):
     pnr = IntegerField('PNR')
     submit = SubmitField('Register')
 
+    def validate_email(self, field):
+        if User.objects(email=self.email.data):
+            raise ValidationError('Email bereits vergeben!')
+
 
 class RegisterFormIntern(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
