@@ -13,3 +13,6 @@ app/static/img
 *.jpg
 *.png
 *.svg
+
+# exclude data import
+data_import*

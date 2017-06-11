@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% import 'macros/form_macros.html' as f %}
 
 {% block content %}
 
@@ -29,9 +28,6 @@
                         </div>
                         <div class="field">
                             {{ form.pnr(placeholder="PNR") }}
-                        </div>
-                        <div class="ui disabled field">
-                            {{ form.permission(placeholder="Berechtigung", value="Hersteller") }}
                         </div>
                         {{ form.submit(class_='ui fluid large blue submit button') }}
                     </form>

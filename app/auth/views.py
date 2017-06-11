@@ -28,11 +28,11 @@ def extern():
     form = RegisterFormExtern()
     if request.method == 'POST' and form.validate_on_submit():
         user = User(email=request.form['email'],
-            firstname=request.form['firstname'],
-            lastname=request.form['lastname'],
-            password_hash=User.generate_password(request.form['password']),
-            permission='Hersteller',
-            pnr=request.form['pnr'])
+                    firstname=request.form['firstname'],
+                    lastname=request.form['lastname'],
+                    password_hash=User.generate_password(request.form['password']),
+                    permission='Hersteller',
+                    pnr=request.form['pnr'])
         try:
             user.save()
         except NotUniqueError:
@@ -41,18 +41,19 @@ def extern():
         return redirect(url_for('main.index'))
     return render_template('auth/extern.html', form=form)
 
+
 @auth.route('/intern', methods=['GET', 'POST'])
 def intern():
     form = RegisterFormIntern()
     if request.method == 'POST' and form.validate_on_submit():
         user = User(email=request.form['email'],
-            firstname=request.form['firstname'],
-            lastname=request.form['lastname'],
-            password_hash=User.generate_password(request.form['password']),
-            permission='Fachabteilung',
-            department=request.form['department'],
-            room=request.form['room'],
-            personal_number=request.form['personal_number'])
+                    firstname=request.form['firstname'],
+                    lastname=request.form['lastname'],
+                    password_hash=User.generate_password(request.form['password']),
+                    permission='Fachabteilung',
+                    department=request.form['department'],
+                    room=request.form['room'],
+                    personal_number=request.form['personal_number'])
         try:
             user.save()
         except NotUniqueError:
@@ -60,6 +61,7 @@ def intern():
         flash('Willkommen {}!'.format(user.firstname))
         return redirect(url_for('main.index'))
     return render_template('auth/intern.html', form=form)
+
 
 @auth.route('/logout', methods=['GET'])
 @login_required

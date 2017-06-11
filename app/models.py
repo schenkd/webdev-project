@@ -10,12 +10,9 @@ def load_user(user_id):
     return User.objects.get(id=user_id)
 
 
-class User(UserMixin, db.Document):
+class User(UserMixin, db.DynamicDocument):
     """ Schema für den User Document """
     # string
-    department = db.StringField()
-    room = db.StringField()
-    personal_number = db.StringField()
     password_hash = db.StringField()
     firstname = db.StringField()
     lastname = db.StringField()

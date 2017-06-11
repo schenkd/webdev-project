@@ -4,9 +4,6 @@ from wtforms import StringField,PasswordField, DateTimeField, BooleanField, Subm
 from wtforms.validators import DataRequired, Length, Email, Regexp, EqualTo
 from app.models import User
 
-choices = [('Hersteller', 'Hersteller'),
-           ('Fachabteilung', 'Fachabteilung')]
-
 
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
@@ -24,9 +21,9 @@ class RegisterFormExtern(FlaskForm):
     lastname = StringField('Nachname', validators=[DataRequired()])
     password = PasswordField('Passwort', validators=[DataRequired(),EqualTo('password2', message='Passwörter nicht identisch.')])
     password2 = PasswordField('Passwort bestätigen', validators=[DataRequired()])
-    permission = SelectField('Berechtigung', choices=choices, validators=[DataRequired()], default='Hersteller')
     pnr = IntegerField('PNR')
     submit = SubmitField('Register')
+
 
 class RegisterFormIntern(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
@@ -34,7 +31,6 @@ class RegisterFormIntern(FlaskForm):
     lastname = StringField('Nachname', validators=[DataRequired()])
     password = PasswordField('Passwort', validators=[DataRequired(),EqualTo('password2', message='Passwörter nicht identisch.')])
     password2 = PasswordField('Passwort bestätigen', validators=[DataRequired()])
-    permission = SelectField('Berechtigung', choices=choices, validators=[DataRequired()], default='Fachabteilung')
     department = StringField('Abteilung')
     room = StringField('Raum')
     personal_number = StringField('Stellenzeichen')
