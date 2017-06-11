@@ -1,8 +1,9 @@
 # ~*~ encoding: utf-8 ~*~
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField, IntegerField, SelectField
-from wtforms.validators import DataRequired, Email
+from wtforms.validators import DataRequired, Email, ValidationError
 from datetime import datetime
+from app.models import Drug
 
 
 def generate_int_tupel_list(number):
@@ -17,7 +18,7 @@ def get_date():
     return {'year': date.year, 'month': date.month, 'day': date.day}
 
 
-choices = [('None', ''),
+choices = [(None, ''),
            ('Produktionsprobleme', 'Produktionsprobleme'),
            ('Hersteller wechsel', 'Hersteller wechsel'),
            ('Änderung des Herstellungsverfahrens', 'Änderung des Herstellungsverfahrens'),
@@ -25,8 +26,8 @@ choices = [('None', ''),
            ('GMP-Mängel', 'GMP-Mängel'),
            ('Probleme bei der Endfreigabe', 'Probleme bei der Endfreigabe')]
 
-boolean = [(True, 'Ja'),
-           (False, 'Nein')]
+boolean = [(False, 'Nein'),
+           (True, 'Ja')]
 
 day = generate_int_tupel_list(31)
 month = generate_int_tupel_list(12)
@@ -36,8 +37,8 @@ year = [(2017, '2017'),
 
 
 class EngpassForm(FlaskForm):
-    pzn = IntegerField('PZN')
     enr = IntegerField('ENR', validators=[DataRequired()])
+    pzn = IntegerField('PZN')
     alternative = SelectField('Alternativepräperate', choices=boolean, default=False)
     inform_expert_group = SelectField('Info an Fachkreise', choices=boolean, default=False)
     day = SelectField('Tag', choices=day, default=get_date()['day'])
@@ -48,6 +49,12 @@ class EngpassForm(FlaskForm):
     telephone = StringField('Telefon')
     email = StringField('Email')
     submit = SubmitField('Melden')
+
+    def validate_enr(self, field):
+        print('VALIDATION')
+        if not Drug.objects(enr=self.enr.data):
+            print('ERROR!')
+            raise ValidationError('ENR ist nicht bekannt!')
 
 
 class ContactForm(FlaskForm):

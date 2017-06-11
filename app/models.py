@@ -19,15 +19,12 @@ class User(UserMixin, db.DynamicDocument):
     permission = db.StringField()
     email = db.EmailField(unique=True)
 
-    # bools
+    # bool
     authorized = db.BooleanField(default=False)
 
     # datetime
     member_since = db.DateTimeField(default=datetime.utcnow)
     last_seen = db.DateTimeField(default=datetime.utcnow)
-
-    # int
-    pnr = db.IntField()
     
     meta = {
         'indexes': [
@@ -48,17 +45,25 @@ class User(UserMixin, db.DynamicDocument):
         self.save()
 
     def __repr__(self):
-        return '<User {}>'.format(self.username)
+        return '<User {}>'.format(self.email)
 
 
 class Drug(db.Document):
     """ Schema für das Arzneimittel Document """
+    # int
     enr = db.IntField()
+    pzn = db.IntField()
+
+    # string
     atc_code = db.StringField()
     drug_title = db.StringField()
+
+    # bool
     hospital = db.BooleanField()
     marketability = db.BooleanField()
-    substance = db.ListField(db.StringField)
+
+    # list
+    substance = db.ListField(db.StringField())
 
     meta = {
         'indexes': [
@@ -66,6 +71,10 @@ class Drug(db.Document):
             'substance'
         ]
     }
+
+    @staticmethod
+    def get_by_enr(enr):
+        return Drug.objects.get(enr=enr)
 
     def __repr__(self):
         return '<Drug {}>'.format(self.enr)
@@ -83,8 +92,9 @@ class Producer(db.Document):
         ]
     }
 
-    def attach_random_user(self):
-        User.objects.get()
+    @staticmethod
+    def get_by_employee(email):
+        return Producer.objects.get(employee=User.objects.get(email=email))
 
     def __repr__(self):
         return '<Producer {}>'.format(self.name)
@@ -98,7 +108,7 @@ class Engpass(db.Document):
     email = db.StringField()
     reason = db.StringField()
 
-    # bools
+    # bool
     alternative = db.BooleanField()
     inform_expert_group = db.BooleanField()
 
@@ -106,9 +116,6 @@ class Engpass(db.Document):
     initial_report = db.DateTimeField(default=datetime.utcnow)
     last_report = db.DateTimeField(default=datetime.utcnow)
     end = db.DateTimeField()
-
-    # int
-    pzn = db.IntField()
 
     # ref
     drug = db.ReferenceField(Drug)

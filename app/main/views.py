@@ -35,16 +35,16 @@ def contact():
 @login_required
 def engpass():
     form = EngpassForm()
-    if request.method == 'POST' and form.validate_on_submit():
+    # TODO: Form validierung funktioniert noch nicht!
+    if request.method == 'POST':
         engpass = Engpass(
-            producer=Producer.objects.get(employee=User.objects.get(email=current_user.email)),
-            drug=Drug.objects.get(enr=request.form['enr']),
-            pzn=request.form['pzn'],
+            producer=Producer.get_by_employee(current_user.email),
+            drug=Drug.get_by_enr(int(request.form['enr'])),
             alternative=request.form['alternative'],
             inform_expert_group=request.form['inform_expert_group'],
-            telephone=request.form['telephon'],
+            telephone=request.form['telephone'],
             email=request.form['email'] if request.form['email'] is None else current_user.email,
-            end=datetime(request.form['year'], request.form['month'], request.form['day']),
+            end=datetime(int(request.form['year']), int(request.form['month']), int(request.form['day'])),
             reason=request.form['reason'],
             other_reasons=request.form['other_reasons']
         )

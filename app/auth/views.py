@@ -1,6 +1,6 @@
 # ~*~ encoding: utf-8 ~*~
 from app.auth import auth
-from app.models import User
+from app.models import User, Producer
 from app.auth.forms import LoginForm, RegisterFormExtern, RegisterFormIntern
 from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_user, login_required, logout_user
@@ -31,10 +31,13 @@ def extern():
                     firstname=request.form['firstname'],
                     lastname=request.form['lastname'],
                     password_hash=User.generate_password(request.form['password']),
-                    permission='Hersteller',
-                    pnr=request.form['pnr'])
+                    permission='Hersteller')
         try:
             user.save()
+            # Referenzierung zum Zulassungsinhaber
+            producer = Producer.objects.get(pnr=request.form['pnr'])
+            producer['employee'] += [User.objects.get(email=request.form['email'])]
+            producer.save()
         except NotUniqueError:
             flash('NotUniqueError!')
         flash('Willkommen {}!'.format(user.firstname))
