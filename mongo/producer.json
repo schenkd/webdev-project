@@ -1,0 +1,25 @@
+
+{
+    "_id" : ObjectId("59349b4ee6d9a71b1307af73"),
+    "name" : "Celltrion Healthcare Hungary Kft.",
+    "pnr" : 1,
+    "employee" : [ 
+        ObjectId("5934ca07bd80093a9bd46512")
+    ]
+}
+
+{
+    "_id" : ObjectId("59349b94e6d9a71b1307af74"),
+    "name" : "Laboratoires Juvise Pharmaceuticals",
+    "pnr" : 2,
+    "employee" : null
+}
+
+{
+    "_id" : ObjectId("59349befe6d9a71b1307af75"),
+    "name" : "Amdipharm Limited",
+    "pnr" : 3,
+    "employee" : [ 
+        ObjectId("593d0ee2bafd5d161de7ca9b")
+    ]
+}

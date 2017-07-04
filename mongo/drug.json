@@ -1,0 +1,495 @@
+
+{
+    "_id" : ObjectId("5926caab10b8a38c2e30e9cd"),
+    "enr" : 61728,
+    "drug_title" : "Penicillin V-ratiopharmŽ TS 400.000 i.E./5 ml, Pulver zur Herstellung einer Lösung zum Einnehmen",
+    "hospital" : true,
+    "atc_code" : "J01CE02",
+    "pzn" : 3529965,
+    "substance" : [ 
+        "Phenoxymethylpenicillin-Kalium"
+    ],
+    "marketability" : true
+}
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9ce"),
+    "enr" : 101592,
+    "drug_title" : "Alkeran 50 mg i.v., Trockensubstanz und Lösungsmittel zur Herstellung einer Injektionslösung oder Infusionslösung",
+    "hospital" : true,
+    "atc_code" : "L01AA03",
+    "pzn" : 4529192,
+    "substance" : [ 
+        "Melphalan"
+    ],
+    "marketability" : true
+}
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9cf"),
+    "enr" : 101758,
+    "drug_title" : "Ampicillin plus Sulbactam Eberth 2g/1 g",
+    "hospital" : true,
+    "atc_code" : "J01CR01",
+    "pzn" : 11138687,
+    "substance" : [ 
+        "Ampicillin", 
+        "Sulbactam"
+    ],
+    "marketability" : true
+}
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9d0"),
+    "enr" : 729857,
+    "drug_title" : "4-DMAP",
+    "hospital" : false,
+    "atc_code" : "V03AB27",
+    "pzn" : 2057607,
+    "substance" : [ 
+        "4-Dimethyl-aminophenol-hydrochlorid"
+    ],
+    "marketability" : true
+}
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9d2"),
+    "enr" : 2112806,
+    "drug_title" : "Calciumfolinat-Gry 100 mg/10 ml Injektionslösung",
+    "hospital" : false,
+    "atc_code" : "V03AF03",
+    "pzn" : 7691384,
+    "substance" : [ 
+        "Calciumfolinat"
+    ],
+    "marketability" : true
+}
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9d3"),
+    "enr" : 2115512,
+    "drug_title" : "Erwinase, 10.000 I.E./Durchstechflasche Pulver zur Herstellung einer Injektionslösung",
+    "hospital" : true,
+    "atc_code" : "L01XX02",
+    "pzn" : 4953145,
+    "substance" : [ 
+        "Crisantaspase"
+    ],
+    "marketability" : true
+}
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9d4"),
+    "enr" : 2126702,
+    "drug_title" : "Calciumfolinat-Gry 200 mg/20 ml Injektionslösung",
+    "hospital" : false,
+    "atc_code" : "V03AF03",
+    "pzn" : 7691409,
+    "substance" : [ 
+        "Calciumfolinat"
+    ],
+    "marketability" : true
+}
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9d5"),
+    "enr" : 2131221,
+    "drug_title" : "Adalat Eins 30 mg, Retardtabletten",
+    "hospital" : false,
+    "atc_code" : "C08CA05",
+    "pzn" : 758079,
+    "substance" : [ 
+        "Nifedipin"
+    ],
+    "marketability" : true
+}
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9d6"),
+    "enr" : 2131223,
+    "drug_title" : "Adalat Eins 60 mg, Retardtabletten",
+    "hospital" : false,
+    "atc_code" : "C08CA05",
+    "pzn" : 758122,
+    "substance" : [ 
+        "Nifedipin"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9d7"),
+    "enr" : 2134136,
+    "drug_title" : "Cortirel, Pulver und Lösungsmittel zur Herstellung einer Injektionslösung, 100 Mikrogramm",
+    "hospital" : true,
+    "atc_code" : "V04CD",
+    "pzn" : 3648121,
+    "substance" : [ 
+        "CorticorelinvomMenschen"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9d8"),
+    "enr" : 2136335,
+    "drug_title" : "Ultiva 1 mg, Pulver zur Herstellung eines Konzentrates zur Herstellung einer Injektions- oder Infusionslösung, 1mg",
+    "hospital" : true,
+    "atc_code" : "N01AH06",
+    "pzn" : 7428758,
+    "substance" : [ 
+        "Remifentanilhydrochlorid"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9d9"),
+    "enr" : 2136336,
+    "drug_title" : "Ultiva 2 mg, Pulver zur Herstellung eines Konzentrates zur Herstellung einer Injektions- oder Infusionslösung, 2mg",
+    "hospital" : true,
+    "atc_code" : "N01AH06",
+    "pzn" : 7428764,
+    "substance" : [ 
+        "Remifentanilhydrochlorid"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9da"),
+    "enr" : 2136337,
+    "drug_title" : "Ultiva 5 mg, Pulver zur Herstellung eines Konzentrates zur Herstellung einer Injektions- oder Infusionslösung, 5mg",
+    "hospital" : true,
+    "atc_code" : "N01AH06",
+    "pzn" : 7428770,
+    "substance" : [ 
+        "Remifentanilhydrochlorid"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9db"),
+    "enr" : 2140743,
+    "drug_title" : "Piperacillin Eberth 2 g",
+    "hospital" : true,
+    "atc_code" : "J01CA12",
+    "pzn" : 7048286,
+    "substance" : [ 
+        "Piperacillin"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9dc"),
+    "enr" : 2140744,
+    "drug_title" : "Piperacillin Eberth 4 g",
+    "hospital" : true,
+    "atc_code" : "J01CA12",
+    "pzn" : 7048317,
+    "substance" : [ 
+        "Piperacillin"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9dd"),
+    "enr" : 2141348,
+    "drug_title" : "Etopophos Durchstechflasche 100 mg",
+    "hospital" : true,
+    "atc_code" : "L01CB01",
+    "pzn" : 7622207,
+    "substance" : [ 
+        "Etoposidphosphat"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9df"),
+    "enr" : 2149211,
+    "drug_title" : "Ampicillin+Sulbactam-ratiopharm 1000/500 mg Vial 5 Pulver zur Herstellung einer Injektionslösung",
+    "hospital" : true,
+    "atc_code" : "J01CA01",
+    "pzn" : 4807716,
+    "substance" : [ 
+        "Ampicillin", 
+        "Sulbactam"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9e0"),
+    "enr" : 2149212,
+    "drug_title" : "Ampicillin+Sulbactam-ratiopharm 2000/1000 mg Vial 5 Pulver zur Herstellung einer Injektionslösung",
+    "hospital" : true,
+    "atc_code" : "J01CA01",
+    "pzn" : 4807722,
+    "substance" : [ 
+        "Ampicillin", 
+        "Sulbactam"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9e1"),
+    "enr" : 2149804,
+    "drug_title" : "L-Thyroxin Henning Tropfen;Tropfen zum Einnehmen, Lösung: 100 Mikrogramm/ml; 1 x 30 ml, 3 x 30 ml",
+    "hospital" : false,
+    "atc_code" : "H03AA01",
+    "pzn" : 842331,
+    "substance" : [ 
+        "Levothyroxin-Natrium"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9e2"),
+    "enr" : 2165676,
+    "drug_title" : "Ampicillin plus Sulbactam Eberth 1g/0,5 g",
+    "hospital" : true,
+    "atc_code" : "J01CR01",
+    "pzn" : 11138664,
+    "substance" : [ 
+        "Ampicillin", 
+        "Sulbactam"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9e3"),
+    "enr" : 2165677,
+    "drug_title" : "Imurek i.v. Pulver zur Herstellung einer Infusions- / Injektionslsg",
+    "hospital" : true,
+    "atc_code" : "L04AX01",
+    "pzn" : 1555214,
+    "substance" : [ 
+        "Azathioprin"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9e4"),
+    "enr" : 2165941,
+    "drug_title" : "Ampicillin und Sulbactam IBI 1 g + 500 mg Pulver zur Herstellung einer Injektionslösung",
+    "hospital" : true,
+    "atc_code" : "J01CR01",
+    "pzn" : 5484543,
+    "substance" : [ 
+        "Ampicillin", 
+        "Sulbactam"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9e5"),
+    "enr" : 2165942,
+    "drug_title" : "Ampicillin und Sulbactam IBI 2 g + 1 g Pulver zur Herstellung einer Injektionslösung",
+    "hospital" : true,
+    "atc_code" : "J01CR01",
+    "pzn" : 5484511,
+    "substance" : [ 
+        "Ampicillin", 
+        "Sulbactam"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caac10b8a38c2e30e9e6"),
+    "enr" : 2166530,
+    "drug_title" : "Piperacillin/Tazobactam-Teva 4 g / 0,5 g Pulver zur Herstellung einer Infusionslösung",
+    "hospital" : true,
+    "atc_code" : "J01CR05",
+    "pzn" : 6805472,
+    "substance" : [ 
+        "Piperacillin", 
+        "Tazobactam"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caad10b8a38c2e30e9e7"),
+    "enr" : 2167690,
+    "drug_title" : "Piperacillin und Tazobactam IBISQUS 2 g/0,25 g Pulver zur Herstellung einer Infusionslösung",
+    "hospital" : true,
+    "atc_code" : "J01CR05",
+    "pzn" : 903021,
+    "substance" : [ 
+        "Piperacillin", 
+        "Tazobactam"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caad10b8a38c2e30e9e8"),
+    "enr" : 2177029,
+    "drug_title" : "Remifentanil Teva 1 mg Pulver für ein Konzentrat zur Herstellung einer Injektions-/Infusionslösung",
+    "hospital" : true,
+    "atc_code" : "N01AH06",
+    "pzn" : 8837401,
+    "substance" : [ 
+        "Remifentanilhydrochlorid"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caad10b8a38c2e30e9e9"),
+    "enr" : 2177030,
+    "drug_title" : "Remifentanil Teva 2 mg Pulver für ein Konzentrat zur Herstellung einer Injektions-/Infusionslösung",
+    "hospital" : true,
+    "atc_code" : "N01AH06",
+    "pzn" : 8837418,
+    "substance" : [ 
+        "Remifentanilhydrochlorid"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caad10b8a38c2e30e9ea"),
+    "enr" : 2177031,
+    "drug_title" : "Remifentanil Teva 5 mg Pulver für ein Konzentrat zur Herstellung einer Injektions-/Infusionslösung",
+    "hospital" : true,
+    "atc_code" : "N01AH06",
+    "pzn" : 8837424,
+    "substance" : [ 
+        "Remifentanilhydrochlorid"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caad10b8a38c2e30e9eb"),
+    "enr" : 2180102,
+    "drug_title" : "Esmocard Lyo 2500 mg Pulver Pulver zur Herstellung einer Infusionslösung",
+    "hospital" : true,
+    "atc_code" : "C07AB09",
+    "pzn" : 11162562,
+    "substance" : [ 
+        "Esmololhydrochlorid"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caad10b8a38c2e30e9ec"),
+    "enr" : 2701183,
+    "drug_title" : "DepoCyte 50 mg Injektionssuspension",
+    "hospital" : true,
+    "atc_code" : "L01BC01",
+    "pzn" : 4722084,
+    "substance" : [ 
+        "Cytarabin"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caad10b8a38c2e30e9ed"),
+    "enr" : 2701870,
+    "drug_title" : "Induct Os 1,5 mg/ml Pulver, Lösungsmittel und Matrix für Matirx zur Implantation",
+    "hospital" : true,
+    "atc_code" : "M05BC01",
+    "pzn" : 11069609,
+    "substance" : [ 
+        "Diboterminalfa"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caad10b8a38c2e30e9ee"),
+    "enr" : 2705793,
+    "drug_title" : "Topotecan Teva 1 mg/ml Konzentrat zur Herstellung einer Infusionslösung - OP(1x1ml)",
+    "hospital" : true,
+    "atc_code" : "L01XX17",
+    "pzn" : 9303305,
+    "substance" : [ 
+        "Topotecan"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caad10b8a38c2e30e9ef"),
+    "enr" : 2705794,
+    "drug_title" : "Topotecan Teva 1 mg/ml Konzentrat zur Herstellung einer Infusionslösung - OP(5x1ml)",
+    "hospital" : true,
+    "atc_code" : "L01XX17",
+    "pzn" : 9303305,
+    "substance" : [ 
+        "Topotecan"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caad10b8a38c2e30e9f0"),
+    "enr" : 2705795,
+    "drug_title" : "Topotecan Teva 4 mg/4 ml Konzentrat zur Herstellung einer Infusionslösung - OP(1x4ml)",
+    "hospital" : true,
+    "atc_code" : "L01XX17  ",
+    "pzn" : 9303311,
+    "substance" : [ 
+        "Topotecan"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caad10b8a38c2e30e9f1"),
+    "enr" : 2705796,
+    "drug_title" : "Topotecan Teva 4 mg/4 ml Konzentrat zur Herstellung einer Infusionslösung - OP(5x4ml)",
+    "hospital" : true,
+    "atc_code" : "L01XX17  ",
+    "pzn" : 9303311,
+    "substance" : [ 
+        "Topotecan"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caad10b8a38c2e30e9f2"),
+    "enr" : 2708676,
+    "drug_title" : "NULOJIX 250 mg Pulver für ein Konzentrat zur Herstellung einer Infusionslösung - OP869.4mg",
+    "hospital" : true,
+    "atc_code" : "L04AA28",
+    "pzn" : 9074158,
+    "substance" : [ 
+        "Belatacept"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caad10b8a38c2e30e9f3"),
+    "enr" : 2167689,
+    "drug_title" : "Piperacillin und Tazobactam IBISQUS 2 g/0,25 g Pulver zur Herstellung einer Infusionslösung",
+    "hospital" : true,
+    "atc_code" : "J01CR05",
+    "pzn" : 897007,
+    "substance" : [ 
+        "Piperacillin", 
+        "Tazobactam"
+    ],
+    "marketability" : true
+}
+
+{
+    "_id" : ObjectId("5926caad10b8a38c2e30e9f4"),
+    "enr" : 2708677,
+    "drug_title" : "NULOJIX 250 mg Pulver für ein Konzentrat zur Herstellung einer Infusionslösung -OP(2x869.4mg)",
+    "hospital" : true,
+    "atc_code" : "L04AA28",
+    "pzn" : 9074164,
+    "substance" : [ 
+        "Belatacept"
+    ],
+    "marketability" : true
+}

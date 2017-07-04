@@ -1,0 +1,29 @@
+<div class="ui inverted vertical footer segment">
+    <div class="ui container">
+        <div class="ui stackable inverted divided equal height stackable grid">
+            <div class="three wide column">
+                <h4 class="ui inverted header">Registrieren</h4>
+                <div class="ui inverted link list">
+                    <a href="{{ url_for('auth.extern') }}" class="item">Registrierung (Hersteller)</a>
+                    <a href="{{ url_for('auth.intern') }}" class="item">Registrierung (Fachabteilung)</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">Services</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Impressum</a>
+                    <a href="#" class="item">AGB's</a>
+                    <a href="http://www.bfarm.de" class="item">BfArM Homepage</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header">Haben Sie Fragen an das BfArM?</h4>
+                <p>Wir helfen Ihnen gerne weiter! Bitte nutzen Sie dazu unser Kontaktformular.
+                    Auf diese Weise wird sichergestellt, dass Ihre Frage sofort den richtigen Ansprechpartner erreicht und schnellstmöglich beantwortet wird. </p>
+                <div class="ui inverted link list">
+                    <a href="{{ url_for('main.contact') }}" class="item">Kontakt</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

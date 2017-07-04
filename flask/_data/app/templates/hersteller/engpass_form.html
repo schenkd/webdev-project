@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% import 'macros/form_macros.html' as f %}
+
+{% block content %}
+
+    <!--Highlight-->
+    <div class="ui vertical stripe segment">
+        <div class="ui middle aligned stackable grid container">
+            <div class="aligned column">
+                <form class="ui massive form" method="post">
+                    {{ form.hidden_tag() }}
+                    <div class="ui equal width massive form">
+                        <div class="ui segments bfarm">
+                            <div class="ui segment">
+                                <h3 class="ui header">Kennzahlen zum Arzneimittel</h3>
+                            </div>
+                            <div class="ui two fields horizontal segments">
+                                <div class="ui field segment">
+                                    <label>Arzneimittelnummer</label>
+                                    {{ form.enr(placeholder='ENR') }}
+                                </div>
+                                <div class="ui field segment">
+                                    <label>Pharmazentralnummer</label>
+                                    {{ form.pzn(placeholder='PZN') }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui segments bfarm">
+                            <div class="ui segment">
+                                <h3 class="ui header">Informationen zum Ausmaß des Engpasses</h3>
+                            </div>
+                            <div class="ui fields horizontal segments">
+                                <div class="ui field segment">
+                                    <label>Alternativpräperate</label>
+                                    {{ form.alternative(placeholder='Alternativepräperate',class_='ui fluid dropdown') }}
+                                    <label>Existieren Alternativpräperate?</label>
+                                </div>
+                                <div class="ui field segment">
+                                    <label>Informationen an Fachkreise</label>
+                                    {{ form.inform_expert_group(placeholder='Info an Fachkreise',class_='ui fluid dropdown') }}
+                                    <label>Wurden Informationen an Fachkreise gegeben?</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui segments bfarm">
+                            <div class="ui segment">
+                                <h3 class="ui header">Vorraussichtliches Ende</h3>
+                            </div>
+                            <div class="ui fields horizontal segments">
+                                <div class="ui field segment">
+                                    <label>Tag</label>
+                                    {{ form.day(placeholder='Tag',class_='ui fluid dropdown') }}
+                                </div>
+                                <div class="ui field segment">
+                                    <label>Montag</label>
+                                    {{ form.month(placeholder='Monat',class_='ui fluid dropdown') }}
+                                </div>
+                                <div class="ui field segment">
+                                    <label>Jahr</label>
+                                    {{ form.year(placeholder='Jahr',class_='ui fluid dropdown') }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui segments bfarm">
+                            <div class="ui segment">
+                                <h3 class="ui header">Engpass Gründe</h3>
+                            </div>
+                            <div class="ui fields horizontal segments">
+                                <div class="ui field segment">
+                                    <label>Engpass-Grund</label>
+                                    <div class="ui left labeled input">
+                                        {{ form.reason(placeholder='Grund für den Lieferengpass',class_='ui fluid dropdown') }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui fields horizontal segments">
+                                <div class="ui field segment">
+                                    <label>Sonstige Gründe für den Engpass</label>
+                                    <div class="ui left labeled input">
+                                        <div class="ui horizontal label">
+                                        <i class="huge icons">
+                                            <i class="big thin circle icon"></i>
+                                            <i class="write icon"></i>
+                                        </i>
+                                        </div>
+                                        {{ form.other_reasons(placeholder='Sonstige Gründe') }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui segments bfarm">
+                            <div class="ui segment">
+                                <h3 class="ui header">Kontakt</h3>
+                            </div>
+                            <div class="ui two fields horizontal segments">
+                                <div class="ui field segment">
+                                    <label>Kontakt Telefon</label>
+                                    {{ form.telephone(placeholder='Telefon') }}
+                                </div>
+                                <div class="ui field segment">
+                                    <label>Kontakt E-Mail</label>
+                                    {{ form.email(placeholder='E-Mail') }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fields">
+                            {{ form.submit(class_='ui fluid big blue submit button') }}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

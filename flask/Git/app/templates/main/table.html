@@ -1,0 +1,34 @@
+<div class="ui very padded segment">
+    <!--Suche-->
+    <div class="ui horizontal segment">
+        <div class="ui center search">
+            <div class="ui fluid icon input">
+                <input class="prompt" type="text" placeholder="Suche...">
+                <i class="search icon"></i>
+            </div>
+            <div class="results"></div>
+        </div>
+    </div>
+    <div class="ui bottom attached tab segment active" data-tab="first">
+        <div class="ui three stackable cards Alle">
+            {% if engpaesse|length %}
+                {% include 'main/_table_entry.html' %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="second">
+        <div class="ui three stackable cards Versorgungsrelevant">
+            {% if engpaesse|length %}
+                {% include 'main/_rel_table_entry.html' %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="ui bottom attached tab segment" data-tab="third">
+        <div class="ui three stackable cards Versorgungsgefährdend">
+            {% if engpaesse|length %}
+                {% include 'main/_gef_table_entry.html' %}
+            {% endif %}
+        </div>
+    </div>
+    <p></p>
+</div>

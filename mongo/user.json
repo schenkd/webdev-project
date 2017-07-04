@@ -1,0 +1,98 @@
+
+{
+    "_id" : ObjectId("59443c619dc409000f1e7748"),
+    "password_hash" : "pbkdf2:sha1:1000$ieQtZSaH$fe8acc497bd3c6b1425efdf50dac5bd8ea3e681c",
+    "firstname" : "Tristan",
+    "lastname" : "Klose",
+    "permission" : "Fachabteilung",
+    "email" : "klosetristan@gmail.com",
+    "authorized" : true,
+    "member_since" : ISODate("2017-06-16T20:15:29.166Z"),
+    "last_seen" : ISODate("2017-06-30T18:35:00.716Z"),
+    "personal_number" : "66.10.04",
+    "room" : "D1.E0.11",
+    "department" : "66"
+}
+{
+    "_id" : ObjectId("59268a4cbd8009544f5643b3"),
+    "email" : "davidschenk4@gmail.com",
+    "password_hash" : "pbkdf2:sha1:1000$oZdEkfyA$31b75205240eeb56ce96e455aeba82e3712a086a",
+    "member_since" : ISODate("2017-05-25T07:39:56.318Z"),
+    "firstname" : "David",
+    "lastname" : "Schenk",
+    "permission" : "Fachabteilung",
+    "last_seen" : ISODate("2017-06-15T16:23:28.997Z"),
+    "authorized" : true
+}
+{
+    "_id" : ObjectId("593459cfbd80091a587099f7"),
+    "email" : "test2@example.com",
+    "password_hash" : "pbkdf2:sha1:1000$IKTxpran$0af6f642a1daf96a3e2898c8a24006c1cab38fd5",
+    "member_since" : ISODate("2017-06-04T19:04:47.564Z"),
+    "firstname" : "Jacob",
+    "lastname" : "Jürgen",
+    "authorized" : true,
+    "permission" : "Hersteller",
+    "last_seen" : ISODate("2017-06-04T19:04:47.564Z")
+}
+{
+    "_id" : ObjectId("59345a26bd80091ba9869013"),
+    "email" : "test3@example.com",
+    "password_hash" : "pbkdf2:sha1:1000$vkPPoZVq$c6df8f47d5512a2118953f3ad5b98f9232aa310f",
+    "member_since" : ISODate("2017-06-04T19:06:14.347Z"),
+    "firstname" : "JJ",
+    "lastname" : "Abrahms",
+    "authorized" : true,
+    "permission" : "Hersteller",
+    "last_seen" : ISODate("2017-06-04T19:06:14.347Z")
+}
+{
+    "_id" : ObjectId("5934ca07bd80093a9bd46512"),
+    "email" : "michael.mueller@example.com",
+    "password_hash" : "pbkdf2:sha1:1000$pkLXypef$57826205c6e2749f1b15926f79598cef1c56e8dc",
+    "firstname" : "Michael",
+    "lastname" : "Müller",
+    "permission" : "Hersteller",
+    "authorized" : false,
+    "member_since" : ISODate("2017-06-05T03:03:35.496Z"),
+    "last_seen" : ISODate("2017-06-05T03:03:35.496Z"),
+    "pnr" : 1
+}
+{
+    "_id" : ObjectId("593d0837bafd5d12bd83908a"),
+    "password_hash" : "pbkdf2:sha1:1000$zqDrMGHO$87677f5095b3282d4d3d973579091e5ef22e43be",
+    "firstname" : "Elvis",
+    "lastname" : "Presley",
+    "permission" : "Hersteller",
+    "email" : "test4@example.com",
+    "authorized" : true,
+    "member_since" : ISODate("2017-06-11T09:07:03.477Z"),
+    "last_seen" : ISODate("2017-06-11T20:49:49.230Z"),
+    "pnr" : 2
+}
+{
+    "_id" : ObjectId("593d0895bafd5d12bd83908b"),
+    "password_hash" : "pbkdf2:sha1:1000$FG7loWUD$22baf9acb99bb232b9c63e6d10f05e2c36c08049",
+    "firstname" : "John",
+    "lastname" : "Oliver",
+    "permission" : "Fachabteilung",
+    "email" : "mitarbeiter@bfarm.de",
+    "authorized" : true,
+    "member_since" : ISODate("2017-06-11T09:08:37.238Z"),
+    "last_seen" : ISODate("2017-06-11T09:08:37.238Z"),
+    "room" : "2.5.1",
+    "personal_number" : "Zulassungsbeauftrager",
+    "department" : "Zulassungsstelle B-3"
+}
+
+{
+    "_id" : ObjectId("593d0ee2bafd5d161de7ca9b"),
+    "password_hash" : "pbkdf2:sha1:1000$sL74ZMsd$646f3d56460e009ff39d827db2834387cc6d9762",
+    "firstname" : "Donald",
+    "lastname" : "Trump",
+    "permission" : "Hersteller",
+    "email" : "test5@example.com",
+    "authorized" : true,
+    "member_since" : ISODate("2017-06-11T09:35:30.728Z"),
+    "last_seen" : ISODate("2017-06-15T16:24:48.583Z")
+}

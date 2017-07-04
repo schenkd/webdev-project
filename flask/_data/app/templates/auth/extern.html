@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!--Engpass Filter-->
+    <div class="ui inverted vertical stripe quote segment">
+        <div class="ui equal width stackable internally celled grid">
+            <div class="center aligned row">
+                <div class="column relevant">
+                    <a href="{{ url_for('auth.extern') }}" class="item">
+                        <h3>"Registrierung Pharmazeutischer Unternehmer"</h3>
+                        <p>Hier können Sie sich als Pharmazeutisches Unternehmen zur Meldung von Arzneimittellieferengpässen einen Benutzeraccount erstellen.</p>
+                    </a>
+                </div>
+                <div class="column essentiell">
+                    <a href="{{ url_for('auth.intern') }}" class="item">        
+                        <h3>"Registrierung Fachabteilung BfArM"</h3>
+                        <p>Hier können sich nur Mitarbeiterinnen und Mitarbeiter der internen Fachabteilungen einen Benutzeraccout erstellen.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Highlight-->
+    <div class="ui vertical stripe segment">
+        <div class="ui middle aligned stackable grid container">
+            <div class="row">
+                <div class="eight wide column">
+                    <h3 class="ui header">Register Pharmazeutischer Unternehmer</h3>
+                    <p>Bitte füllen Sie das Registerungsformular vollständig aus.</p>
+                    <form class="ui form" method="post">
+                        {{ form.hidden_tag() }}
+                        <div class="field">
+                            {{ form.email(placeholder="Email") }}
+                        </div>
+                        <div class="field">
+                            {{ form.firstname(placeholder="Vorname") }}
+                        </div>
+                        <div class="field">
+                            {{ form.lastname(placeholder="Nachname") }}
+                        </div>
+                        <div class="field">
+                            {{ form.password(placeholder="Password") }}
+                        </div>
+                        <div class="field">
+                            {{ form.password2(placeholder="Password wiederholen") }}
+                        </div>
+                        <div class="field">
+                            {{ form.pnr(placeholder="PNR") }}
+                        </div>
+                        {{ form.submit(class_='ui fluid large blue submit button') }}
+                    </form>
+                    
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                            <div class="ui message">
+                                <div>{{ message }}</div>
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    
+                </div>
+                <div class="six wide right floated column">
+                    <img src="{{ url_for('static', filename='img/favicon.png') }}" class="ui medium bordered rounded image">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

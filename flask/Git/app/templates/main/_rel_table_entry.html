@@ -1,0 +1,180 @@
+{% for engpass in engpaesse %}
+{% if engpass.drug.hospital %}
+    <div class="ui link card">
+        <div class="image">
+            <img src="{{ url_for('static', filename='img/TB_AM_Lieferengpaesse.jpg') }}">
+        </div>
+
+        <div class="content">
+            <a class="header">{{ engpass.drug.drug_title }}</a>
+            <div class="meta">
+                <span class="date">Voraussichtliches Ende: </span>
+                <span class="date">{{ engpass.end.strftime('%d.%m.%Y') }}</span>
+            </div>
+        <div class="description">
+        {% if engpass.drug.hospital %}
+                                <table class="ui celled table">
+                    <tbody>
+                        <tr>
+                            <td class="versorgungsrel"><p>Versorgungsrelevant</p></td>
+                        </tr>
+                    </tbody>
+                </table>
+        {% endif %}
+        {% for essentiell in essentielle %}
+            {% if engpass.drug.enr == essentiell.enr %}
+                                    <table class="ui celled table">
+                        <tbody>
+                            <tr>
+                                <td class="versorgungsgf"><p>Versorgungsgefährdend</p></td>
+                            </tr>
+                        </tbody>
+                    </table>
+            {% endif %}
+        {% endfor %}
+
+            </div>
+        </div>
+
+                <div class="extra content">
+
+                    <div class="ui accordion">
+                        <div class="title">
+                            <i class="dropdown icon"></i>
+                            Wirkstoffe
+                        </div>
+                        <div class="content">
+                            <p class="transition visible" style="display: block !important;">
+                                <div class="ui list">
+                                {% for substance in engpass.drug.substance %}
+                                    <div class="item">{{ substance }}</div>
+                                {% endfor %}
+                                </div>
+                            </p>
+                        </div>
+                        <div class="title">
+                            <i class="dropdown icon"></i>
+                            Kennzahlen
+                        </div>
+                        <div class="content">
+                            <table class="ui celled table">
+                                <tbody>
+                                    <tr>
+                                        <td>PZN</td>
+                                        <td>{{ engpass.drug.pzn }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ATC - Code</td>
+                                        <td>{{ engpass.drug.atc_code }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Verkehrsfähig</td>
+                                        <td>{{ engpass.drug.marketability }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="title">
+                            <i class="dropdown icon"></i>
+                            Information
+                        </div>
+                        <div class="content">
+                            <table class="ui celled table">
+                                <tbody>
+                                    <tr>
+                                        <td>Alternativpräparat</td>
+                                        {% if engpass.alternative %}
+                                            <td class="positive"><i class="icon checkmark"></i>{{ engpass.alternative }}</td>
+                                        {% else %}
+                                            <td class="negative"><i class="icon close"></i>{{ engpass.alternative }}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        <td>Info an Fachkreise</td>
+                                        {% if engpass.inform_expert_group %}
+                                            <td class="positive"><i class="icon checkmark"></i>{{ engpass.inform_expert_group }}</td>
+                                        {% else %}
+                                            <td class="negative"><i class="icon close"></i>{{ engpass.inform_expert_group }}</td>
+                                        {% endif %}
+                                    </tr>
+                                    <tr>
+                                        <td>Krankenhausrelevant</td>
+                                        {% if engpass.drug.hospital %}
+                                            <td class="positive"><i class="icon checkmark"></i>{{ engpass.drug.hospital }}</td>
+                                        {% else %}
+                                            <td class="negative"><i class="icon close"></i>{{ engpass.drug.hospital }}</td>
+                                        {% endif %}
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="title">
+                            <i class="dropdown icon"></i>
+                            Gründe / Historie
+                        </div>
+                        <div class="content">
+                            <table class="ui celled table">
+                                <tbody>
+                                    <tr>
+                                        <td>Letzte Meldung</td>
+                                        <td>{{ engpass.last_report.strftime('%Y-%m-%d %H:%M') }} Uhr</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Erstmeldung</td>
+                                        <td>{{ engpass.initial_report.strftime('%Y-%m-%d %H:%M') }} Uhr</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Grund</td>
+                                        <td>{{ engpass.reason }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sonstige Gründe</td>
+                                        <td>{{ engpass.other_reasons }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="title">
+                            <i class="dropdown icon"></i>
+                            Kontakt
+                        </div>
+                        <div class="content">
+                            <table class="ui celled table">
+                                <tbody>
+                                    <tr>
+                                        <td>Zulassungsinhaber</td>
+                                        <td>{{ engpass.producer.name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kontakt Telefon</td>
+                                        <td>{{ engpass.telephone }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kontakt E-Mail</td>
+                                        <td>{{ engpass.email }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="right floated meta">
+                            {% if current_user.is_authenticated %}
+                                {% if current_user in engpass.producer.employee or current_user.permission == 'Fachabteilung' %}
+                                    <div class="ui mini icon menu">
+                                        <a href="{{ url_for('main.edit_engpass', enr=engpass.drug.enr|int) }}" class="item"><i class="blue write icon"></i></a>
+                                        <a href="{{ url_for('main.remove_engpass', enr=engpass.drug.enr|int) }}" class="item"><i class="red remove icon"></i></a>
+                                    </div>
+                                {% else %}
+                                    <div class="ui mini icon menu">
+                                        <a class="item"><i class="grey write icon"></i></a>
+                                        <a class="item"><i class="grey remove icon"></i></a>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+{% endfor %}

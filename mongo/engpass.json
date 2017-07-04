@@ -1,0 +1,30 @@
+
+{
+    "_id" : ObjectId("593d2988bafd5d1dc9593935"),
+    "other_reasons" : "Hallo das ist ein Test",
+    "telephone" : "",
+    "email" : "test5@example.com",
+    "reason" : "Hersteller wechsel",
+    "alternative" : true,
+    "inform_expert_group" : true,
+    "initial_report" : ISODate("2017-06-11T11:29:12.445Z"),
+    "last_report" : ISODate("2017-06-11T11:29:12.445Z"),
+    "end" : ISODate("2017-06-15T00:00:00.000Z"),
+    "drug" : ObjectId("5926caab10b8a38c2e30e9cd"),
+    "producer" : ObjectId("59349befe6d9a71b1307af75")
+}
+
+{
+    "_id" : ObjectId("593d3133bafd5d20a8e35c0e"),
+    "other_reasons" : "Test 2",
+    "telephone" : "",
+    "email" : "test5@example.com",
+    "reason" : "Produktionsprobleme",
+    "alternative" : false,
+    "inform_expert_group" : false,
+    "initial_report" : ISODate("2017-06-11T12:01:55.338Z"),
+    "last_report" : ISODate("2017-06-15T16:24:48.475Z"),
+    "end" : ISODate("2017-06-20T00:00:00.000Z"),
+    "drug" : ObjectId("5926caac10b8a38c2e30e9ce"),
+    "producer" : ObjectId("59349befe6d9a71b1307af75")
+}
