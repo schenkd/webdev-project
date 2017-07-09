@@ -48,7 +48,7 @@
 			        	Sehen Sie sich alle Lieferengpässe an, die als versorgungsrelevant eingestuft wurden.
 			        </p>
 		        </div>
-		        <div class="column essentiell" onclick="getFilter('ESSENTIELL');">
+		        <div class="column essentiell" onclick="getFilter('DANGER');">
 		          	<h3>"Versorgungsgefährdende Lieferengpässe"</h3>
 		          	<p>
 		            	Sehen Sie sich alle Lieferengpässe an, die als versorgungsgefährdend eingestuft wurden.
@@ -60,7 +60,9 @@
 
 	<!--Engpass Liste-->
 
+	<div id="table">
 	{% include 'main/table.html' %}
+	</div>
 
 
 {% endblock %}

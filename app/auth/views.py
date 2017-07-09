@@ -3,9 +3,10 @@ from app.auth import auth
 from app.models import User, Producer
 from app.auth.forms import LoginForm, RegisterFormExtern, RegisterFormIntern
 from flask import render_template, request, redirect, url_for, flash
-from flask_login import login_user, login_required, logout_user
+from flask_login import login_user, login_required, logout_user, current_user
 from mongoengine.errors import NotUniqueError
 from app.decorators import admin_required
+from app.models import Log
 
 
 @auth.route('/login', methods=['GET', 'POST'])
@@ -82,6 +83,16 @@ def approval():
     if request.form['approval'] == 'True':
         user.authorized = True
         user.save()
+
+        # save in log
+        user = User.objects.get(email=current_user.email)
+        Log(user=user, category='approval', text='Hat die Anfrage von {} {} akzeptiert.'
+            .format(user['firstname'], user['lastname'])).save()
     elif request.form['approval'] == 'False':
         user.delete()
+
+        # save in log
+        user = User.objects.get(email=current_user.email)
+        Log(user=user, category='approval', text='Hat die Anfrage von {} {} abgelehnt.'
+            .format(user['firstname'], user['lastname'])).save()
     return redirect(url_for('main.verwaltung'))

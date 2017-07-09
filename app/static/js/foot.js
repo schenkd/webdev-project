@@ -1,10 +1,12 @@
 $('select.dropdown').dropdown();
 
 function getFilter(msg) {
-    return $.ajax({
+    $.ajax({
         url: '/_getFilter',
         type: 'POST',
         data: JSON.stringify(msg),
-        datatype: 'json'
+        datatype: 'json',
+    }).done(function (reply) {
+        $('#table').html(reply);
     });
 };

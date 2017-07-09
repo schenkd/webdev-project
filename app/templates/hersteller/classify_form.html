@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!--Highlight-->
+    <div class="ui vertical stripe segment">
+        <div class="ui middle aligned stackable grid container">
+            <div class="aligned column">
+                <form class="ui massive form" method="post">
+                    {{ form.hidden_tag() }}
+                    <div class="ui equal width massive form">
+                        <div class="ui segments bfarm">
+                            <div class="ui segment">
+                                <h3 class="ui header">Klassifizierung eines Arzneimittel</h3>
+                            </div>
+                            <div class="ui two fields horizontal segments">
+                                <div class="ui field segment">
+                                    <label>Arzneimittelnummer</label>
+                                    {{ form.enr(placeholder='ENR') }}
+                                </div>
+                                <div class="ui field segment">
+                                    <label>Klassifizierung</label>
+                                    {{ form.classify(placeholder='Klassifizieren',class_='ui fluid dropdown') }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fields">
+                            {{ form.submit(class_='ui fluid big blue submit button') }}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

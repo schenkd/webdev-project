@@ -53,6 +53,7 @@ class Drug(db.DynamicDocument):
     # int
     enr = db.IntField()
     pzn = db.IntField()
+    classify = db.IntField(default=0)
 
     # string
     atc_code = db.StringField()
@@ -75,6 +76,10 @@ class Drug(db.DynamicDocument):
     @staticmethod
     def get_by_enr(enr):
         return Drug.objects.get(enr=enr)
+
+    def update_class(self, classify):
+        self.classify = classify
+        self.save()
 
     def __repr__(self):
         return '<Drug {}>'.format(self.enr)
@@ -136,11 +141,11 @@ class Engpass(db.Document):
         self.save()
 
     def __repr__(self):
-        return '<Engpass {}>'.format(self.enr)
+        return '<Engpass {}>'.format(self.drug)
 
 
 class Contact(db.Document):
-    """ STatisches Schema für das Kontakt Document """
+    """ Statisches Schema für das Kontakt Document """
     firstname = db.StringField()
     lastname = db.StringField()
     message = db.StringField()
@@ -156,6 +161,14 @@ class Contact(db.Document):
 
     def __repr__(self):
         return '<Contact {}>'.format(self.email)
+
+
+class Log(db.Document):
+    """ Log zur Dokumentation jeglicher Useraktionen """
+    user = db.ReferenceField(User)
+    timestamp = db.DateTimeField(default=datetime.utcnow)
+    category = db.StringField()
+    text = db.StringField()
 
 
 class AnonymousUser(AnonymousUserMixin):

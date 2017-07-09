@@ -6,6 +6,7 @@ from datetime import datetime
 from app.models import Drug
 
 
+# Generiert ein Liste von Tupeln aus einem integer und einem string
 def generate_int_tupel_list(number):
     liste = list()
     for x in range(1, number+1):
@@ -35,6 +36,10 @@ year = [(2017, '2017'),
         (2018, '2018'),
         (2019, '2019')]
 
+classified = [(0, 'keine Klassifizierung'),
+              (1, 'versorgungsrelevant'),
+              (2, 'versorgungsgefährdend')]
+
 
 class EngpassForm(FlaskForm):
     enr = IntegerField('ENR', validators=[DataRequired()])
@@ -63,4 +68,10 @@ class ContactForm(FlaskForm):
     message = TextAreaField('Nachricht')
     telephone = StringField('Telefon')
     email = StringField('Email', validators=[DataRequired(), Email()])
+    submit = SubmitField('Abschicken')
+
+
+class ClassifyForm(FlaskForm):
+    enr = IntegerField('ENR', validators=[DataRequired()])
+    classify = SelectField('Klassifizierung', choices=classified)
     submit = SubmitField('Abschicken')

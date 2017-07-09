@@ -25,12 +25,16 @@
                 <span class="date">Voraussichtliches Ende: </span>
                 <span class="date">{{ engpass.end.strftime('%d.%m.%Y') }}</span>
             </div>
-            {% if engpass.drug.classified %}
+            {% if engpass.drug.classify %}
             <div class="description">
                 <table class="ui celled table">
                     <tbody>
                         <tr>
-                            <td class="versorgungsgf"><p>{{ engpass.drug.classified }}</p></td>
+                            {% if engpass.drug.classify == 1 %}
+                            <td class="versorgungsrel"><p>Versorgungsrelevant</p></td>
+                            {% elif engpass.drug.classify == 2 %}
+                            <td class="versorgungsgf"><p>Versorgungsgefährdent</p></td>
+                            {% endif %}
                         </tr>
                     </tbody>
                 </table>

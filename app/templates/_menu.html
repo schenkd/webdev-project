@@ -5,12 +5,18 @@
         <div class="ui vertical sidebar menu right">
 
             {% if current_user.is_authenticated %}
-                <a href="{{ url_for('main.index') }}" class="blue active item">Home - {{ current_user.firstname|capitalize }} {{ current_user.lastname|capitalize }}</a>
-            {% else %}
-                <a href="{{ url_for('main.index') }}" class="blue active item">Home</a>
+                <a href="#" class="blue active item">Hallo {{ current_user.firstname|capitalize }} {{ current_user.lastname|capitalize }}!</a>
+            {% endif %}
+            <a class="item">{{ moment().format('LLL') }}</a>
+            <a href="{{ url_for('main.index') }}" class="item">Home</a>
+
+            {% if current_user.is_authenticated and current_user.permission == 'Hersteller' %}
+                <a href="{{ url_for('main.engpass') }}" class="item">Meine Engpässe</a>
+            {% elif current_user.is_authenticated and current_user.permission == 'Fachabteilung' %}
+                <a href="{{ url_for('main.verwaltung') }}" class="item">Verwaltung</a>
+                <a href="{{ url_for('main.classify') }}" class="item">Klassifizieren</a>
             {% endif %}
 
-                <a class="item">{{ moment().format('LLL') }}</a>
                 <a href="{{ url_for('main.contact') }}" class="item">Kontakt</a>
 
             {% if current_user.is_authenticated %}
@@ -20,13 +26,6 @@
                 <a href="{{ url_for('auth.extern') }}" class="item">Registrierung (Hersteller)</a>
                 <a href="{{ url_for('auth.intern') }}" class="item">Registrierung (Fachabteilung)</a>
             {% endif %}
-
-            {% if current_user.is_authenticated and current_user.permission == 'Hersteller' %}
-                <a href="{{ url_for('main.engpass') }}" class="item">Meine Engpässe</a>
-            {% elif current_user.is_authenticated and current_user.permission == 'Fachabteilung' %}
-                <a href="{{ url_for('main.verwaltung') }}" class="item">Verwaltung</a>
-            {% endif %}
-
 
         </div>
     </div>
