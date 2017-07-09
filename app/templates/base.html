@@ -19,7 +19,13 @@
         <script src="{{ url_for('static', filename='js/base.js') }}"></script>
         {{ moment.include_moment() }}
         {{ moment.lang("de") }}
-
+<script type="text/javascript">
+var content = [
+{% for engpass in engpaesse %}
+{ title: '{{ engpass.drug.drug_title }}' },
+{% endfor %}
+];
+</script>
     </head>
 
     <body class="pushable">

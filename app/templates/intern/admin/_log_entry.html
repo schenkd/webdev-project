@@ -1,0 +1,8 @@
+{% for log in logs %}
+    <tr>
+        <td>{{ log.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+        <td>{{ log.user.firstname }} {{ log.user.lastname }}</td>
+        <td>{{ log.category }}</td>
+        <td>{{ log.text }}</td>
+    </tr>
+{% endfor %}

@@ -12,58 +12,66 @@ from app.models import Log
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+
     if request.method == 'POST' and form.validate_on_submit():
         user = User.objects.get(email=request.form['email'])
+
         if user is not None and user.verify_password(request.form['password']):
             if user.authorized:
                 login_user(user)
                 return redirect(request.args.get('next') or url_for('main.index'))
             flash('Sorry, ihr Account wurde noch nicht autorisiert.')
-    else:
-        flash('Bitte überprüfen Sie ihre Zugangsdaten.')
+
     return render_template('auth/login.html', form=form)
 
 
 @auth.route('/extern', methods=['GET', 'POST'])
 def extern():
     form = RegisterFormExtern()
+
     if request.method == 'POST' and form.validate_on_submit():
-        user = User(email=request.form['email'],
-                    firstname=request.form['firstname'],
-                    lastname=request.form['lastname'],
-                    password_hash=User.generate_password(request.form['password']),
-                    permission='Hersteller')
+        # Erstellen einer Registrierungsanfrage des Herstellers
+        User(email=request.form['email'],
+             firstname=request.form['firstname'],
+             lastname=request.form['lastname'],
+             password_hash=User.generate_password(request.form['password']),
+             permission='Hersteller'
+             ).save()
         try:
-            user.save()
-            # Referenzierung zum Zulassungsinhaber
+            # Referenzierung des User beim Zulassungsinhaber
             producer = Producer.objects.get(pnr=request.form['pnr'])
             producer['employee'] += [User.objects.get(email=request.form['email'])]
             producer.save()
         except NotUniqueError:
             flash('NotUniqueError!')
-        flash('Willkommen {}!'.format(user.firstname))
         return redirect(url_for('main.index'))
+
     return render_template('auth/extern.html', form=form)
 
 
 @auth.route('/intern', methods=['GET', 'POST'])
 def intern():
     form = RegisterFormIntern()
+
     if request.method == 'POST' and form.validate_on_submit():
-        user = User(email=request.form['email'],
-                    firstname=request.form['firstname'],
-                    lastname=request.form['lastname'],
-                    password_hash=User.generate_password(request.form['password']),
-                    permission='Fachabteilung',
-                    department=request.form['department'],
-                    room=request.form['room'],
-                    personal_number=request.form['personal_number'])
-        try:
-            user.save()
-        except NotUniqueError:
-            flash('NotUniqueError!')
-        flash('Willkommen {}!'.format(user.firstname))
+
+        if not request.form['email'].endswith('@bfarm.de'):
+            # Prüfung auf gültige E-Mailadresse
+            flash('Bitte registrieren Sie sich mit einer E-Mailadresse des BfArM!')
+            return render_template('auth/intern.html', form=form)
+
+        # Erstellen einer Registrierungsanfrage der Fachabteilung
+        User(email=request.form['email'],
+             firstname=request.form['firstname'],
+             lastname=request.form['lastname'],
+             password_hash=User.generate_password(request.form['password']),
+             permission='Fachabteilung',
+             department=request.form['department'],
+             room=request.form['room'],
+             personal_number=request.form['personal_number']
+             ).save()
         return redirect(url_for('main.index'))
+
     return render_template('auth/intern.html', form=form)
 
 
@@ -80,7 +88,9 @@ def logout():
 @admin_required
 def approval():
     user = User.objects.get(email=request.form['email'])
+
     if request.form['approval'] == 'True':
+        # Registrierungsanfrage akzeptieren
         user.authorized = True
         user.save()
 
@@ -89,10 +99,12 @@ def approval():
         Log(user=user, category='approval', text='Hat die Anfrage von {} {} akzeptiert.'
             .format(user['firstname'], user['lastname'])).save()
     elif request.form['approval'] == 'False':
+        # Registrierungsanfrage ablehnen
         user.delete()
 
         # save in log
         user = User.objects.get(email=current_user.email)
         Log(user=user, category='approval', text='Hat die Anfrage von {} {} abgelehnt.'
             .format(user['firstname'], user['lastname'])).save()
+
     return redirect(url_for('main.verwaltung'))

@@ -44,8 +44,8 @@ classified = [(0, 'keine Klassifizierung'),
 class EngpassForm(FlaskForm):
     enr = IntegerField('ENR', validators=[DataRequired()])
     pzn = IntegerField('PZN')
-    alternative = SelectField('Alternativepräperate', choices=boolean, default=False)
-    inform_expert_group = SelectField('Info an Fachkreise', choices=boolean, default=False)
+    alternative = SelectField('Alternativepräperate', choices=boolean)
+    inform_expert_group = SelectField('Info an Fachkreise', choices=boolean)
     day = SelectField('Tag', choices=day, default=get_date()['day'])
     month = SelectField('Monat', choices=month, default=get_date()['month'])
     year = SelectField('Jahr', choices=year, default=get_date()['year'])

@@ -1,0 +1,33 @@
+<table class="ui striped structured table">
+  <thead>
+    <tr>
+        <th class="" colspan="4">Versorgungsrelevant</th>
+    </tr>
+    <tr>
+      <th>ERN</th>
+      <th>Arzneimittel</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if relevants|length %}
+      {% include 'intern/classify/_relevants_entry.html' %}
+    {% endif %}
+  </tbody>
+</table>
+
+<table class="ui striped structured table">
+  <thead>
+    <tr>
+        <th colspan="4">Versorgungsgefährded</th>
+    </tr>
+    <tr>
+      <th>ERN</th>
+      <th>Arzneimittel</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if dangers|length %}
+      {% include 'intern/classify/_dangers_entry.html' %}
+    {% endif %}
+  </tbody>
+</table>

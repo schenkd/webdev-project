@@ -188,6 +188,12 @@
     color: #FFFFFF !important;
 }
 
+.ui.table tr.versorgungskk, .ui.table td.versorgungskk {
+    background: rgba(0, 0, 0, 0.1) !important;
+    color: #004f80 !important;
+}
+
+
 .ui.search .prompt {
     border-radius: 0rem;
 }

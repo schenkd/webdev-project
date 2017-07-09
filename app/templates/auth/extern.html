@@ -9,6 +9,7 @@
                 <div class="eight wide column">
                     <h3 class="ui header">Register</h3>
                     <p>Bitte füllen Sie das Registerungsformular vollständig aus.</p>
+
                     <form class="ui form" method="post">
                         {{ form.hidden_tag() }}
                         <div class="field">
@@ -31,15 +32,7 @@
                         </div>
                         {{ form.submit(class_='ui fluid large blue submit button') }}
                     </form>
-                    <div class="ui message">
-                        {% with messages = get_flashed_messages() %}
-                            {% if messages %}
-                                {% for message in messages %}
-                                    <div>{{ message }}</div>
-                                {% endfor %}
-                            {% endif %}
-                        {% endwith %}
-                    </div>
+
                 </div>
                 <div class="six wide right floated column">
                     <img src="{{ url_for('static', filename='img/favicon.png') }}" class="ui medium bordered rounded image">

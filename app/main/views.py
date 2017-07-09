@@ -19,6 +19,11 @@ def index():
     return render_template('main/index.html', engpaesse=engpaesse)
 
 
+@main.route('/search/<query>', methods=['GET', 'POST'])
+def search_query(query):
+    pass
+
+
 @main.route('/klassifizierung', methods=['GET', 'POST'])
 def classify():
     form = ClassifyForm()
@@ -36,17 +41,22 @@ def classify():
             drug = Drug.get_by_enr(enr)
             drug.update_class(classify)
 
-            # Integer in einen String trasnformieren für die Message an den Benutzer
+            # Integer in einen String transformieren
+            # als Text in der Message und im Log
             classify_name = [pair[1] for pair in classified if classify in pair]
             flash('{} wurde als {} klassifiziert'.format(drug['drug_title'], classify_name[0]))
 
             # save in log
             user = User.objects.get(email=current_user.email)
-            Log(user=user, text='{} wurde als {} klassifiziert'.format(enr, classify)).save()
+            Log(user=user, category='classify', text='{} wurde als {} klassifiziert'.format(enr, classify)).save()
         except:
             flash('ENR {} konnte keinem Arzneimittel zugewiesen werden'.format(enr))
 
-    return render_template('hersteller/classify_form.html', form=form)
+    # query Arzneimittel entsprechend der Klassifizierung
+    relevants = Drug.objects(classify=1)
+    dangers = Drug.objects(classify=2)
+
+    return render_template('intern/classify/form.html', form=form, relevants=relevants, dangers=dangers)
 
 
 @main.route('/_getFilter', methods=['POST'])
@@ -54,19 +64,18 @@ def getFilter():
     msg = request.get_json(force=True)
 
     if msg == 'RELEVANT':
-        print('RELEVANT')
+        # query alle versorgungsrelevanten Engpaesse
         drugs = [doc.id for doc in Drug.objects(classify=1)]
         engpaesse = Engpass.objects(__raw__={'drug': {'$in': drugs}})
     elif msg == 'DANGER':
-        print('DANGER')
+        # query alle versorgungsgefährdende Engpaesse
         drugs = [doc.id for doc in Drug.objects(classify=2)]
         engpaesse = Engpass.objects(__raw__={'drug': {'$in': drugs}})
     else:
-        print('ALL')
+        # query alle Engpaesse
         engpaesse = Engpass.objects()
-    print(engpaesse)
-    html = render_template('main/table.html', engpaesse=engpaesse)
-    return html
+
+    return render_template('main/table.html', engpaesse=engpaesse)
 
 
 @main.route('/contact', methods=['GET', 'POST'])
@@ -77,17 +86,19 @@ def contact():
     if current_user.is_authenticated:
         current_user.update_last_seen()
 
+    if request.method == 'POST' and form.validate_on_submit():
+        # Erstellen eines Contact Dokument
+        Contact(firstname=request.form['firstname'],
+                lastname=request.form['lastname'],
+                telephone=request.form['telephone'],
+                message=request.form['message'],
+                email=request.form['email']
+                ).save()
+
         # save in log
         user = User.objects.get(email=current_user.email)
         Log(user=user, category='contact', text='Hat eine Kontaktanfrage gesendet.').save()
 
-    if request.method == 'POST' and form.validate_on_submit():
-        contact = Contact(firstname=request.form['firstname'],
-                          lastname=request.form['lastname'],
-                          telephone=request.form['telephone'],
-                          message=request.form['message'],
-                          email=request.form['email'])
-        contact.save()
         flash('Ihre Nachricht wurde erfolgreich übermittelt.')
     return render_template('main/contact.html', form=form)
 
@@ -98,7 +109,8 @@ def engpass():
     form = EngpassForm()
 
     if request.method == 'POST':
-        engpass = Engpass(
+        # Erststellung eines Engpass Document
+        Engpass(
             producer=Producer.get_by_employee(current_user.email),
             drug=Drug.get_by_enr(int(request.form['enr'])),
             alternative=request.form['alternative'],
@@ -108,8 +120,7 @@ def engpass():
             end=datetime(int(request.form['year']), int(request.form['month']), int(request.form['day'])),
             reason=request.form['reason'],
             other_reasons=request.form['other_reasons']
-        )
-        engpass.save()
+        ).save()
 
         # save in log
         user = User.objects.get(email=current_user.email)
@@ -128,16 +139,25 @@ def verwaltung():
     if current_user.is_authenticated:
         current_user.update_last_seen()
 
+    # query aller nicht autorisierten User
     unauthorized_users = User.objects(authorized=False)
-    return render_template('intern/verwaltung.html', unauthorized_users=unauthorized_users)
+
+    # query letzten Zehn Log Documents
+    logs = Log.objects[:10]
+
+    return render_template('intern/admin/verwaltung.html', unauthorized_users=unauthorized_users, logs=logs)
 
 
 @main.route('/edit_engpass/<int:enr>', methods=['GET', 'POST'])
 @login_required
 def edit_engpass(enr):
     form = EngpassForm()
+
+    # Ausgewählte Engpass Document laden
     engpass = Engpass.get_by_enr(enr)
+
     if request.method == 'POST':
+        # Bearbeitung des Engpass Document
         engpass['drug'] = Drug.objects.get(enr=int(request.form['enr']))
         print(request.form['alternative'])
         engpass['alternative'] = True if request.form['alternative'] == 'Ja' else False
@@ -155,6 +175,8 @@ def edit_engpass(enr):
             text='Hat eine Zwischenmeldung für den Engpass von Arzneimittel ENR {} abgegeben.'.format(request.form['enr'])).save()
 
         return redirect(url_for('main.index'))
+
+    # Zuweisung der Values aus dem Engpass Document
     form.enr.data = engpass.drug['enr']
     form.pzn.data = engpass.drug['pzn']
     form.alternative.default = engpass['alternative']
@@ -166,4 +188,5 @@ def edit_engpass(enr):
     form.other_reasons.data = engpass['other_reasons']
     form.telephone.data = engpass['telephone']
     form.email.data = engpass['email']
+
     return render_template('hersteller/engpass_form.html', form=form)

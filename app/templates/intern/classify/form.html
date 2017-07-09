@@ -5,7 +5,9 @@
     <!--Highlight-->
     <div class="ui vertical stripe segment">
         <div class="ui middle aligned stackable grid container">
+
             <div class="aligned column">
+
                 <form class="ui massive form" method="post">
                     {{ form.hidden_tag() }}
                     <div class="ui equal width massive form">
@@ -23,12 +25,15 @@
                                     {{ form.classify(placeholder='Klassifizieren',class_='ui fluid dropdown') }}
                                 </div>
                             </div>
-                        </div>
-                        <div class="fields">
-                            {{ form.submit(class_='ui fluid big blue submit button') }}
+                            <div class="ui field segment">
+                                {{ form.submit(class_='ui fluid big blue submit button') }}
+                            </div>
                         </div>
                     </div>
                 </form>
+                <br>
+                {% include 'intern/classify/table.html' %}
+
             </div>
         </div>
     </div>

@@ -1,31 +1,13 @@
 {% for engpass in engpaesse %}
 
     <div class="ui link card">
-        <div class="content">
-            <div class="right floated meta">
-                {% if current_user in engpass.producer.employee %}
-                    <div class="ui mini icon menu">
-                        <a href="{{ url_for('main.edit_engpass', enr=engpass.drug.enr|int) }}" class="item"><i class="blue write icon"></i></a>
-                        <a class="item"><i class="red remove icon"></i></a>
-                    </div>
-                {% else %}
-                    <div class="ui mini icon menu">
-                        <a class="item"><i class="grey write icon"></i></a>
-                        <a class="item"><i class="grey remove icon"></i></a>
-                    </div>
-                {% endif %}
-            </div>
-        </div>
+
         <div class="image">
             <img src="{{ url_for('static', filename='img/TB_AM_Lieferengpaesse.jpg') }}">
         </div>
+
         <div class="content">
-            <a class="header">{{ engpass.drug.drug_title }}</a>
-            <div class="meta">
-                <span class="date">Voraussichtliches Ende: </span>
-                <span class="date">{{ engpass.end.strftime('%d.%m.%Y') }}</span>
-            </div>
-            {% if engpass.drug.classify %}
+
             <div class="description">
                 <table class="ui celled table">
                     <tbody>
@@ -34,12 +16,20 @@
                             <td class="versorgungsrel"><p>Versorgungsrelevant</p></td>
                             {% elif engpass.drug.classify == 2 %}
                             <td class="versorgungsgf"><p>Versorgungsgefährdent</p></td>
+                            {% else %}
+                            <td class="versorgungskk"><p>Keine Klassifizierung</p></td>
                             {% endif %}
                         </tr>
                     </tbody>
                 </table>
             </div>
-            {% endif %}
+            <br>
+            <a class="header">{{ engpass.drug.drug_title }}</a>
+            <div class="meta">
+                <span class="date">Voraussichtliches Ende: </span>
+                <span class="date">{{ engpass.end.strftime('%d.%m.%Y') }}</span>
+            </div>
+
         </div>
                 <div class="extra content">
                     <div class="ui accordion">
@@ -162,5 +152,21 @@
                         </div>
                     </div>
                 </div>
+                <div class="content">
+                    <div class="right floated meta">
+                        {% if current_user in engpass.producer.employee or current_user.permission == "Fachabteilung" %}
+                        <div class="ui mini icon menu">
+                            <a href="{{ url_for('main.edit_engpass', enr=engpass.drug.enr|int) }}" class="item"><i class="blue write icon"></i></a>
+                            <a class="item"><i class="red remove icon"></i></a>
+                        </div>
+                        {% else %}
+                        <div class="ui mini icon menu">
+                            <a class="item"><i class="grey write icon"></i></a>
+                            <a class="item"><i class="grey remove icon"></i></a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
+
 {% endfor %}

@@ -1,0 +1,35 @@
+<table class="ui celled padded table">
+    <thead>
+        <tr>
+            <th>Vor- und Nachname</th>
+            <th>Email</th>
+            <th>User-Typ</th>
+            <th>Registriert</th>
+            <th>Akzeptieren?</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if unauthorized_users|length %}
+            {% include 'intern/admin/_table_entry.html' %}
+        {% endif %}
+    </tbody>
+</table>
+
+<table class="ui striped structured table">
+  <thead>
+    <tr>
+        <th colspan="4">SysLog</th>
+    </tr>
+    <tr>
+        <th>Zeitstempel</th>
+        <th>User</th>
+        <th>Kategorie</th>
+        <th>Nachricht</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if logs|length %}
+      {% include 'intern/admin/_log_entry.html' %}
+    {% endif %}
+  </tbody>
+</table>

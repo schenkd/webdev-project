@@ -10,7 +10,7 @@ def load_user(user_id):
     return User.objects.get(id=user_id)
 
 
-class User(UserMixin, db.Document):
+class User(UserMixin, db.DynamicDocument):
     """ Dynamisches Schema für den User Document """
     # string
     password_hash = db.StringField()
@@ -69,7 +69,8 @@ class Drug(db.DynamicDocument):
     meta = {
         'indexes': [
             'enr',
-            'substance'
+            'substance',
+            '$drug_title'
         ]
     }
 
@@ -164,7 +165,7 @@ class Contact(db.Document):
 
 
 class Log(db.Document):
-    """ Log zur Dokumentation jeglicher Useraktionen """
+    """ Log zur Dokumentation aller Useraktionen """
     user = db.ReferenceField(User)
     timestamp = db.DateTimeField(default=datetime.utcnow)
     category = db.StringField()
