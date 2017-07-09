@@ -1,6 +1,6 @@
 # ~*~ encoding: utf-8 ~*~
 from app.main import main
-from flask import render_template, request, flash, redirect, url_for
+from flask import render_template, request, flash, redirect, url_for, jsonify
 from app.main.forms import EngpassForm, ContactForm, boolean, choices
 from app.models import Engpass, User, Drug, Producer, Contact
 from flask_login import login_required, current_user
@@ -10,10 +10,26 @@ from datetime import datetime
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
-    engpaesse =Engpass.objects()
+    engpaesse = Engpass.objects()
     if current_user.is_authenticated:
         current_user.update_last_seen()
     return render_template('main/index.html', engpaesse=engpaesse)
+
+
+# TODO: PYMONGO QUERY NOT WORKING!
+@main.route('/_getFilter', methods=['POST'])
+def getFilter():
+    msg = request.get_json(force=True)
+
+    if msg == 'RELEVANT':
+        engpaesse = Engpass.objects(__raw__={'drug.classified': msg})
+    elif msg == 'ESSENTIELL':
+        engpaesse = Engpass.objects(__raw__={'drug.classified': msg})
+    else:
+        engpaesse = Engpass.objects()
+
+    print(engpaesse)
+    return render_template('main/table.html', engpaesse=engpaesse)
 
 
 @main.route('/contact', methods=['GET', 'POST'])

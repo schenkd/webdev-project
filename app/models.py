@@ -10,8 +10,8 @@ def load_user(user_id):
     return User.objects.get(id=user_id)
 
 
-class User(UserMixin, db.DynamicDocument):
-    """ Schema für den User Document """
+class User(UserMixin, db.Document):
+    """ Dynamisches Schema für den User Document """
     # string
     password_hash = db.StringField()
     firstname = db.StringField()
@@ -48,8 +48,8 @@ class User(UserMixin, db.DynamicDocument):
         return '<User {}>'.format(self.email)
 
 
-class Drug(db.Document):
-    """ Schema für das Arzneimittel Document """
+class Drug(db.DynamicDocument):
+    """ Dynamisches Schema für das Arzneimittel Document """
     # int
     enr = db.IntField()
     pzn = db.IntField()
@@ -81,7 +81,7 @@ class Drug(db.Document):
 
 
 class Producer(db.Document):
-    """ Schema für das Hersteller Document """
+    """ Statisches Schema für das Hersteller Document """
     name = db.StringField()
     pnr = db.IntField()
     employee = db.ListField(db.ReferenceField(User))
@@ -101,7 +101,7 @@ class Producer(db.Document):
 
 
 class Engpass(db.Document):
-    """ Schema für das Engpass Document """
+    """ Statisches Schema für das Engpass Document """
     # string
     other_reasons = db.StringField()
     telephone = db.StringField()
@@ -140,7 +140,7 @@ class Engpass(db.Document):
 
 
 class Contact(db.Document):
-    """ Schema für das Kontakt Document """
+    """ STatisches Schema für das Kontakt Document """
     firstname = db.StringField()
     lastname = db.StringField()
     message = db.StringField()

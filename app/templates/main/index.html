@@ -38,17 +38,17 @@
 	<div class="ui inverted vertical stripe quote segment">
 	    <div class="ui equal width stackable internally celled grid">
 		    <div class="center aligned row">
-		        <div class="column valide">
+		        <div class="column valide" onclick="getFilter('ALL');">
 			    	<h3>"Alle Lieferengpässe"</h3>
 			 		<p>Sehen Sie sich eine Liste mit allen Lieferenpässen zugelassener Arzneimittel an.</p>
 		        </div>
-		        <div class="column relevant">
+		        <div class="column relevant" onclick="getFilter('RELEVANT');">
 			        <h3>"Versorgungsrelevante Lieferengpässe"</h3>
 			        <p>
 			        	Sehen Sie sich alle Lieferengpässe an, die als versorgungsrelevant eingestuft wurden.
 			        </p>
 		        </div>
-		        <div class="column essentiell">
+		        <div class="column essentiell" onclick="getFilter('ESSENTIELL');">
 		          	<h3>"Versorgungsgefährdende Lieferengpässe"</h3>
 		          	<p>
 		            	Sehen Sie sich alle Lieferengpässe an, die als versorgungsgefährdend eingestuft wurden.
